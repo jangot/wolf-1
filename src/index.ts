@@ -1,3 +1,10 @@
-import { app } from './app'
+import '../main.scss';
+import { template } from './template';
+import $ from 'jquery';
+import { app } from './app';
 
-app();
+$(() => {
+    template();
+    // app();
+});
+
