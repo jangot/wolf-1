@@ -5,6 +5,8 @@ import { app } from './app';
 
 $(() => {
     template();
-    app();
+    const game = app();
+
+    game.run();
 });
 

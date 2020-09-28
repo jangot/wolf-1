@@ -16,7 +16,7 @@ function moveClass(className: string) {
     });
 }
 
-export function app() {
+export function app(): Game {
     const g = new Game($('#game'));
 
     // Moving selected items
@@ -62,8 +62,6 @@ export function app() {
         moveClass(CLASS.GOING);
     });
 
-    g.run();
-
     $(window).keypress((e) => {
         controller.forEach(({ key, cb }) => {
             if (key === e.keyCode) {
@@ -75,4 +73,6 @@ export function app() {
     controller.forEach(({ name, cb }) => {
         $(`.${name}`).on('click', cb);
     });
+
+    return g;
 }
