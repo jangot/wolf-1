@@ -4,19 +4,27 @@ import {Game} from './game';
 import {CLASS} from './constants';
 import {controller} from './controller';
 
+function moveClass(className: string) {
+    const list = $(`.${className}`);
+    list.each(function() {
+        $(this).removeClass(className);
+    });
+    list.each(function () {
+        $(this)
+            .next()
+            .addClass(className);
+    });
+}
+
 export function app() {
     const g = new Game($('#game'));
 
+    // Moving selected items
     g.on((): void => {
-        $(`.${CLASS.SELECTED}`).each(function () {
-            $(this)
-                .removeClass(CLASS.SELECTED)
-                .next('.item')
-                .addClass(CLASS.SELECTED)
-
-        })
+        moveClass(CLASS.SELECTED);
     });
 
+    // Start moving
     g.on(() => {
         const r = random(1, 100);
 
@@ -29,6 +37,7 @@ export function app() {
         }
     });
 
+    // Fail
     g.on(() => {
         const selected = $('.last').filter(`.${CLASS.SELECTED}`);
         if (selected.length === 0) {
@@ -38,13 +47,20 @@ export function app() {
         const woolf = selected.next();
 
         if (!woolf.hasClass(CLASS.ACTIVE)) {
+            const failClass = woolf.data('fail-class');
+            $(`.${failClass}`).children().first().addClass(CLASS.GOING);
             g.fail();
         } else {
             g.addScore();
         }
 
         $('.score').html(g.score + ' / ' + g.failed);
-    })
+    });
+
+    // moving fail
+    g.on(() => {
+        moveClass(CLASS.GOING);
+    });
 
     g.run();
 

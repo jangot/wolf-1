@@ -1,4 +1,7 @@
-$eggs-top: 25px;
+$egg-w: 40px;
+$egg-h: 20px;
+$fail-w: 40px;
+$fail-h: 20px;
 
 * {
     margin: 0;
@@ -27,8 +30,8 @@ $eggs-top: 25px;
 }
 
 .coll {
-    width: 125px;
-    height: 135px;
+    width: #{$egg-w * 5};
+    height: #{$egg-h * 6};
     /*border: 1px green solid;*/
     position: absolute;
 }
@@ -57,51 +60,21 @@ $eggs-top: 25px;
     display: none;
 }
 
-#coll_1 .item:nth-child(2),
-#coll_2 .item:nth-child(2) {
-    margin-left: 0px;
-}
-#coll_1 .item:nth-child(3),
-#coll_2 .item:nth-child(3) {
-    margin-left: 25px;
-}
-#coll_1 .item:nth-child(4),
-#coll_2 .item:nth-child(4) {
-    margin-left: 50px;
-}
-#coll_1 .item:nth-child(5),
-#coll_2 .item:nth-child(5) {
-    margin-left: 75px;
-}
-#coll_1 .item:nth-child(6),
-#coll_2 .item:nth-child(6) {
-    margin-left: 100px;
-}
+@for $i from 0 through 4 {
+    #coll_1 .item:nth-child(#{$i + 2}),
+    #coll_2 .item:nth-child(#{$i + 2}) {
+        margin-left: #{$egg-w * $i};
+    }
 
-#coll_3 .item:nth-child(2),
-#coll_4 .item:nth-child(2) {
-    margin-left: 100px;
-}
-#coll_3 .item:nth-child(3),
-#coll_4 .item:nth-child(3) {
-    margin-left: 75px;
-}
-#coll_3 .item:nth-child(4),
-#coll_4 .item:nth-child(4) {
-    margin-left: 50px;
-}
-#coll_3 .item:nth-child(5),
-#coll_4 .item:nth-child(5) {
-    margin-left: 25px;
-}
-#coll_3 .item:nth-child(6),
-#coll_4 .item:nth-child(6) {
-    margin-left: 0px;
+    #coll_3 .item:nth-child(#{$i + 2}),
+    #coll_4 .item:nth-child(#{$i + 2}) {
+        margin-left: #{$egg-w * (4 - $i)};
+    }
 }
 
 .item {
-    width: 25px;
-    height: 25px;
+    width: $egg-w;
+    height: $egg-h;
     border: 1px black solid;
 }
 
@@ -134,4 +107,36 @@ $eggs-top: 25px;
 
 .woolf.active {
     background: orange;
+}
+
+.fail-line {
+    position: absolute;
+    bottom: 0;
+    height: $fail-h;
+    width: #{$fail-w * 5 + 5 * 2};
+    display: flex;
+    background: aquamarine;
+
+    &.fail_left {
+        left: $egg-w;
+        flex-direction: row-reverse;
+    }
+
+    &.fail_right {
+        right: $egg-w;
+    }
+
+    .fail-item:first-child {
+        display: none;
+    }
+
+    .fail-item {
+        width: $fail-w;
+        height: $fail-h;
+        border: 1px blue solid;
+    }
+
+    .going {
+        background: gold;
+    }
 }

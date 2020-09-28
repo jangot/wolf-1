@@ -7,5 +7,6 @@ export enum SIM {
 
 export enum CLASS {
     SELECTED = 'selected',
-    ACTIVE = 'active'
+    ACTIVE = 'active',
+    GOING = 'going',
 }

@@ -5,6 +5,6 @@ import { app } from './app';
 
 $(() => {
     template();
-    // app();
+    app();
 });
 
