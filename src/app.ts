@@ -71,4 +71,8 @@ export function app() {
             }
         });
     });
+
+    controller.forEach(({ name, cb }) => {
+        $(`.${name}`).on('click', cb);
+    });
 }

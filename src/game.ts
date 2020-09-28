@@ -8,7 +8,7 @@ export class Game {
     failed: number;
 
     constructor(element: JQuery) {
-        this.time = 700;
+        this.time = 1000;
         this.events = [];
         this.stoped = false;
         this.debug = false;

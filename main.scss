@@ -34,79 +34,84 @@ $fail-h: 20px;
     height: #{$egg-h * 6};
     /*border: 1px green solid;*/
     position: absolute;
-}
 
-#coll_1 {
-    top: 0px;
-    left: 0px;
-}
+    .woolf {
+        width: 25px;
+        height: 50px;
+        position: absolute;
+        bottom: -50px;
 
-#coll_2 {
-    top: 150px;
-    left: 0px;
-}
-
-#coll_3 {
-    top: 0px;
-    right: 0px;
-}
-
-#coll_4 {
-    top: 150px;
-    right: 0;
-}
-
-.coll .item:nth-child(1) {
-    display: none;
-}
-
-@for $i from 0 through 4 {
-    #coll_1 .item:nth-child(#{$i + 2}),
-    #coll_2 .item:nth-child(#{$i + 2}) {
-        margin-left: #{$egg-w * $i};
+        &.active {
+            background: orange;
+        }
     }
 
-    #coll_3 .item:nth-child(#{$i + 2}),
-    #coll_4 .item:nth-child(#{$i + 2}) {
-        margin-left: #{$egg-w * (4 - $i)};
+    &#coll_1 {
+        top: 0px;
+        left: 0px;
+
+        .woolf {
+            right: -25px;
+        }
     }
-}
 
-.item {
-    width: $egg-w;
-    height: $egg-h;
-    border: 1px black solid;
-}
+    &#coll_2 {
+        top: 150px;
+        left: 0px;
 
-.item.selected {
-    background: silver;
-}
+        .woolf {
+            right: -25px;
+        }
+    }
 
-.item.last {
-    border: none;
-    background: none;
-}
+    &#coll_3 {
+        top: 0px;
+        right: 0px;
 
-.woolf {
-    width: 25px;
-    height: 50px;
-    position: absolute;
-    bottom: -50px;
-    /*background: yellow;*/
-}
+        .woolf {
+            left: -25px;
+        }
+    }
 
-#coll_1 .woolf,
-#coll_2 .woolf {
-    right: -25px;
-}
+    &#coll_4 {
+        top: 150px;
+        right: 0;
 
-#coll_3 .woolf,
-#coll_4 .woolf {
-    left: -25px;
-}
+        .woolf {
+            left: -25px;
+        }
+    }
 
-.woolf.active {
-    background: orange;
+    .item:nth-child(1) {
+        display: none;
+    }
+
+    @for $i from 0 through 4 {
+        &#coll_1 .item:nth-child(#{$i + 2}),
+        &#coll_2 .item:nth-child(#{$i + 2}) {
+            margin-left: #{$egg-w * $i};
+        }
+
+        &#coll_3 .item:nth-child(#{$i + 2}),
+        &#coll_4 .item:nth-child(#{$i + 2}) {
+            margin-left: #{$egg-w * (4 - $i)};
+        }
+    }
+
+    .item {
+        width: $egg-w;
+        height: $egg-h;
+        border: 1px black solid;
+
+        &.selected {
+            background: silver;
+        }
+
+        &.last {
+            border: none;
+            background: none;
+        }
+    }
 }
 
 .fail-line {
@@ -138,5 +143,43 @@ $fail-h: 20px;
 
     .going {
         background: gold;
+    }
+}
+
+.keyboard {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: goldenrod;
+    opacity: 0.3;
+    z-index: 100;
+
+    .key {
+        border: 1px greenyellow solid;
+        position: absolute;
+        width: 50%;
+        height: 50%;
+
+        &.tl {
+            top: 0;
+            left: 0;
+        }
+
+        &.tr {
+            top: 0;
+            right: 0;
+        }
+
+        &.bl {
+            bottom: 0;
+            left: 0;
+        }
+
+        &.br {
+            bottom: 0;
+            right: 0;
+        }
     }
 }

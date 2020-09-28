@@ -8,7 +8,7 @@ export type ControllerItem = {
 }
 export const controller: ControllerItem[] = [
     {
-        name: 'top-let',
+        name: 'tl',
         key: SIM.Q,
         cb: () => {
             $(`.${CLASS.ACTIVE}`).removeClass(CLASS.ACTIVE);
@@ -16,7 +16,7 @@ export const controller: ControllerItem[] = [
         }
     },
     {
-        name: 'bottom-left',
+        name: 'bl',
         key: SIM.A,
         cb: () => {
             $(`.${CLASS.ACTIVE}`).removeClass(CLASS.ACTIVE);
@@ -24,7 +24,7 @@ export const controller: ControllerItem[] = [
         }
     },
     {
-        name: 'top-right',
+        name: 'tr',
         key: SIM.P,
         cb: () => {
             $(`.${CLASS.ACTIVE}`).removeClass(CLASS.ACTIVE);
@@ -32,7 +32,7 @@ export const controller: ControllerItem[] = [
         }
     },
     {
-        name: 'bottom-right',
+        name: 'br',
         key: SIM.L,
         cb: () => {
             $(`.${CLASS.ACTIVE}`).removeClass(CLASS.ACTIVE);
