@@ -7,6 +7,7 @@ export class Game {
     score: number;
     element: JQuery
     failed: number;
+    timeout: number;
 
     constructor(element: JQuery) {
         this.events = [];
@@ -36,7 +37,7 @@ export class Game {
         if (this.debug) {
             return ;
         }
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
             this.run();
         }, this.time);
     }
@@ -50,6 +51,7 @@ export class Game {
 
     stop() {
         this.stoped = true;
+        clearTimeout(this.timeout);
     }
 
     start() {
@@ -62,12 +64,12 @@ export class Game {
 
     failGame() {
         this.element.addClass('stop');
-        this.stoped = true;
+        this.stop();
     }
 
     addScore() {
         this.score++;
-        if (this.time  > 100) {
+        if (this.time > 100) {
             this.time -= 3;
         }
     }
