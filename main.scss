@@ -1,5 +1,5 @@
 $egg-w: 40px;
-$egg-h: 20px;
+$egg-h: 40px;
 $fail-w: 40px;
 $fail-h: 20px;
 
@@ -50,13 +50,17 @@ $fail-h: 20px;
     position: absolute;
 
     .woolf {
-        width: 25px;
-        height: 50px;
+        width: 50px;
+        height: 80px;
         position: absolute;
-        bottom: -50px;
+        bottom: -75px;
+        opacity: 0.1;
+        border: 2px black solid;
+        border-top: none;
+        background: darkgray;
 
         &.active {
-            background: orange;
+            opacity: 1;
         }
     }
 
@@ -115,10 +119,11 @@ $fail-h: 20px;
     .item {
         width: $egg-w;
         height: $egg-h;
-        border: 1px black solid;
+        border: 1px silver solid;
+        border-radius: #{$egg-w / 2};
 
         &.selected {
-            background: silver;
+            border-color: black;
         }
 
         &.last {
@@ -134,7 +139,6 @@ $fail-h: 20px;
     height: $fail-h;
     width: #{$fail-w * 5 + 5 * 2};
     display: flex;
-    background: aquamarine;
 
     &.fail_left {
         left: $egg-w;
@@ -153,10 +157,13 @@ $fail-h: 20px;
         width: $fail-w;
         height: $fail-h;
         border: 1px blue solid;
+        background: gold;
+        border-radius: #{$fail-w / 4};
+        opacity: 0.1;
     }
 
     .going {
-        background: gold;
+        opacity: 1;
     }
 }
 

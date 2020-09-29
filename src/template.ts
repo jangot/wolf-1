@@ -30,7 +30,7 @@ function fail(n: number) {
     const failLine =  $(`<div class="fail-line fail_${side}"></div>`);
 
     for (let i = 0; i < 6; i++) {
-        failLine.append(`<div class="fail-item">${i}</div>`);
+        failLine.append(`<div class="fail-item"></div>`);
     }
 
     return failLine;
