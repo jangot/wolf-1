@@ -8,6 +8,19 @@ $fail-h: 20px;
     padding: 0;
 }
 
+.foolscreen {
+    width: 300px;
+    margin-left: -150px;
+    height: 50px;
+    border: 1px brown solid;
+    border-radius: 10px;
+    background: sandybrown;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    z-index: 200;
+}
+
 #game {
     margin: 0 auto;
     width: 99%;
