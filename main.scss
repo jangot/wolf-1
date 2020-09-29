@@ -8,7 +8,7 @@ $fail-h: 20px;
     padding: 0;
 }
 
-.foolscreen {
+.btn {
     width: 300px;
     margin-left: -150px;
     height: 50px;
@@ -16,9 +16,16 @@ $fail-h: 20px;
     border-radius: 10px;
     background: sandybrown;
     position: fixed;
-    top: 50px;
     left: 50%;
     z-index: 200;
+
+    &.foolscreen {
+        top: 50px;
+    }
+
+    &.start {
+        top: 110px;
+    }
 }
 
 #game {

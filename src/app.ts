@@ -19,6 +19,12 @@ function moveClass(className: string) {
 export function app(): Game {
     const g = new Game($('#game'));
 
+    g.onStart(() => {
+        $(`.${CLASS.SELECTED}`).removeClass(CLASS.SELECTED);
+        $(`.${CLASS.GOING}`).removeClass(CLASS.GOING);
+        $('.score').html('0 / 0');
+    });
+
     // Moving selected items
     g.on((): void => {
         moveClass(CLASS.SELECTED);
@@ -28,7 +34,8 @@ export function app(): Game {
     g.on(() => {
         const r = random(1, 100);
 
-        if (r > 40) {
+        const selected = $(`.${CLASS.SELECTED}`);
+        if (r > 40 || selected.length === 0) {
             const n = random(1, 4);
 
             const item = $(`#coll_${n}`).children().first();

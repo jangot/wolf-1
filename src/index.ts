@@ -7,6 +7,9 @@ $(() => {
     template();
     const game = app();
 
-    game.run();
+    $('.start').on('click', () => {
+        game.stop();
+        game.start();
+    });
 });
 

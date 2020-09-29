@@ -1,6 +1,7 @@
 export class Game {
     time: number;
     events: (() => void)[];
+    startEvents: (() => void)[];
     stoped: boolean;
     debug: boolean;
     score: number;
@@ -8,16 +9,22 @@ export class Game {
     failed: number;
 
     constructor(element: JQuery) {
-        this.time = 1000;
         this.events = [];
-        this.stoped = false;
-        this.debug = false;
-        this.score = 0;
+        this.startEvents = [];
         this.element = element;
-        this.failed = 0;
     }
     on(cb: () => void) {
         this.events.push(cb);
+    }
+    onStart(cb: () => void) {
+        this.startEvents.push(cb);
+    }
+    defaultValues() {
+        this.time = 1000;
+        this.stoped = false;
+        this.debug = false;
+        this.score = 0;
+        this.failed = 0;
     }
     run() {
         if (this.stoped) {
@@ -37,11 +44,23 @@ export class Game {
     fail() {
         this.failed++;
         if (this.failed === 3) {
-            this.stop();
+            this.failGame();
         }
     }
 
     stop() {
+        this.stoped = true;
+    }
+
+    start() {
+        this.defaultValues();
+        this.startEvents.forEach(item => item());
+        this.element.removeClass('stop');
+        this.stoped = false;
+        this.run();
+    }
+
+    failGame() {
         this.element.addClass('stop');
         this.stoped = true;
     }
