@@ -1,0 +1,50 @@
+$width: 40px;
+$height: 40px;
+
+.messages {
+  display: flex;
+
+  .coll {
+    div {
+      border: 1px red solid;
+      width: $width;
+      height: $height;
+
+      &.active {
+        background: red;
+      }
+    }
+  }
+}
+
+.crashed {
+  display: flex;
+
+  .coll {
+    margin: 0 #{$width / 2};
+
+    div {
+      width: $width;
+      height: $height;
+      border: 1px yellowgreen solid;
+
+      &.active {
+        background: yellowgreen;
+      }
+    }
+  }
+}
+
+.woolf {
+  display: flex;
+
+  div {
+    border: 1px green solid;
+    width: $width;
+    height: $height;
+
+    &.active {
+      background: green;
+    }
+  }
+}
