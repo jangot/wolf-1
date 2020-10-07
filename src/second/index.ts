@@ -1,7 +1,14 @@
 import './main.scss';
 import $ from 'jquery';
-import {CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue,} from './type';
+import {
+    CrashedPosition,
+    CrashedQueue,
+    GAME_EVENT,
+    GamePosition,
+    MessagesQueue,
+} from './type';
 import {Game} from './game';
+import {applyController} from './controller';
 
 function renderLine(name: GamePosition, messages: MessagesQueue) {
     messages[name].forEach((item, index) => {
@@ -37,14 +44,7 @@ const lines = [
 $(() => {
     const g = new Game();
 
-    lines.forEach((position) => {
-        const el = $(`.woolf .${position}`);
-        el.on('click', () => {
-            g.setWolfPosition(position);
-            $('.woolf .active').removeClass('active');
-            el.addClass('active');
-        });
-    });
+    applyController(g);
 
     g.on(GAME_EVENT.START, () => {
         $(`.woolf .${g.wolfPosition}`).addClass('active');
