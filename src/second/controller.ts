@@ -44,7 +44,7 @@ export function applyController(game: Game) {
             el.addClass('active');
         }
 
-        $(`.keyboard .${position}`).on('click', setPosiont);
+        $(`.keyboard .${position}`).on('touchstart', setPosiont);
         $(window).on('keypress', (e) => {
             if (e.keyCode === key) {
                 setPosiont();
