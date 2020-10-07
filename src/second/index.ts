@@ -64,7 +64,7 @@ $(() => {
 
     g.on(GAME_EVENT.TICK, () => {
         $('.fail').html(g.fail || 'non');
-        $('.score').html(g.score + ' / ' + g.errors);
+        $('.score').html('v4' + ' / ' + g.score + ' / ' + g.errors);
     });
 
     g.on(GAME_EVENT.STOP, () => {
