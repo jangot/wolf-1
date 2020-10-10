@@ -1,10 +1,10 @@
-import {GamePosition} from './type';
-import $ from 'jquery';
+import {GAME_EVENT, GamePosition} from './type';
 import {Game} from './game';
+import {element, El} from './util/index';
 
 type ControllerItem = {
     position: GamePosition;
-    key: number;
+    code: string;
 };
 
 const lines = [
@@ -17,38 +17,48 @@ const lines = [
 const l: ControllerItem[] = [
     {
         position: GamePosition.TL,
-        key: 113
+        code: 'KeyQ'
     },
     {
         position: GamePosition.TR,
-        key: 112
+        code: 'KeyP'
     },
     {
         position: GamePosition.BL,
-        key: 97
+        code: 'KeyA'
     },
     {
         position: GamePosition.BR,
-        key: 108
+        code: 'KeyL'
     }
 ];
 
-
 export function applyController(game: Game) {
-    l.forEach(({position, key}) => {
-        const el = $(`.woolf .${position}`);
-
-        function setPosiont() {
-            game.setWolfPosition(position);
-            $('.woolf .active').removeClass('active');
-            el.addClass('active');
+    function setPosition(el: El, position: GamePosition) {
+        if (!game.isRun) {
+            return;
         }
+        game.setWolfPosition(position);
+        element('.woolf .active').removeClass('active');
+        el.addClass('active');
+    }
 
-        $(`.keyboard .${position}`).on('touchstart', setPosiont);
-        $(window).on('keypress', (e) => {
-            if (e.keyCode === key) {
-                setPosiont();
+    l.forEach(({position, code}) => {
+        const el = element(`.woolf .${position}`);
+
+        element(`.keyboard .${position}`).on('touchstart', () => setPosition(el, position));
+        // element(`.keyboard .${position}`).on('click', setPosition);
+        window.addEventListener('keypress', (e) => {
+            if (e.code === code) {
+                setPosition(el, position);
             }
         });
     });
+
+    element('.controls .start').on('click', () => game.start());
+    element('.controls .stop').on('click', () => game.stop());
+    game.on(GAME_EVENT.START, () => {
+        setPosition(element(`.woolf .${GamePosition.TL}`), GamePosition.TL);
+    });
+
 }

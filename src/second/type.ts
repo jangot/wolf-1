@@ -15,6 +15,7 @@ export enum GAME_EVENT {
     START = 'start',
     STOP = 'stop',
     TICK = 'tick',
+    FAIL = 'fail',
 }
 
 export type Event = {

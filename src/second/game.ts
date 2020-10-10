@@ -18,6 +18,8 @@ const lines = [
     GamePosition.BR,
 ];
 
+const LESSING_TIME = 3;
+
 export class Game {
 
     isRun: boolean;
@@ -117,6 +119,7 @@ export class Game {
         this.updateScore();
         this.updateCrashed();
         this.setNewCrashed();
+        this.checkStatus();
     }
 
     private updateMessages() {
@@ -191,9 +194,25 @@ export class Game {
         if (fail === this.wolfPosition) {
             this.fail = null;
             this.score++;
+            this.lessTime();
         } else {
             this.fail = fail;
             this.errors++
+        }
+    }
+
+    private checkStatus() {
+        if (this.errors < 3) {
+            return;
+        }
+
+        this.emit(GAME_EVENT.FAIL);
+        this.stop();
+    }
+
+    private lessTime() {
+        if (this.tickTime > 200) {
+            this.tickTime -= LESSING_TIME;
         }
     }
 }
