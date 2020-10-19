@@ -7,7 +7,7 @@ export class Game {
     score: number;
     element: JQuery
     failed: number;
-    timeout: number;
+    timeout: NodeJS.Timeout;
 
     constructor(element: JQuery) {
         this.events = [];

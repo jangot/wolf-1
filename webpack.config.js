@@ -1,9 +1,31 @@
 const path = require('path');
 
-module.exports = {
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const ENV = process.env.APP_ENV;
+const isTest = ENV === 'test';
+const isProd = ENV === 'prod';
+
+function setDevTool() {
+    if (isTest) {
+        return 'inline-source-map';
+    } else if (isProd) {
+        return 'source-map';
+    } else {
+        return 'eval-source-map';
+    }
+}
+
+const config = {
+    mode: "development",
     entry: {
-        index: './src/index.ts',
-        second: './src/second/index.ts'
+        index: './src/second/index.ts'
+    },
+    output: {
+        filename: 'bundle-[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -25,8 +47,24 @@ module.exports = {
     resolve: {
         extensions: [ '.tsx', '.ts', '.js', 'scss'],
     },
-    output: {
-        filename: 'bundle-[name].js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-};
+    devtool: setDevTool(),
+    plugins: [],
+    devServer: {
+        contentBase: __dirname,
+        port: 3000,
+        disableHostCheck: true,
+    }
+}
+
+if (isProd) {
+    config.plugins.push(
+        new UglifyJSPlugin()
+        //new CopyWebpackPlugin({
+        //             patterns: [
+        //                 { from: __dirname + '/src/public' }
+        //             ],
+        //         }),
+    );
+}
+
+module.exports = config;

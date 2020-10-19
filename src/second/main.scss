@@ -7,11 +7,18 @@ $height: 40px;
   padding: 0;
 }
 
+body {
+  background-color: #333;
+  font-family: Charter;
+  font-size: 30px;
+}
+
 .game {
-  width: $full-width;
-  height: 600px;
-  background: darkgray;
   position: relative;
+  height: 350px;
+  background-color: #d3f7ff;
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 .messages {

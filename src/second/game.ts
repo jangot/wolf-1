@@ -31,7 +31,7 @@ export class Game {
     errors: number;
 
     private tickTime: number;
-    private timeout: number;
+    private timeout: NodeJS.Timeout;
     private events: Event[];
 
     constructor() {
@@ -169,8 +169,8 @@ export class Game {
             return;
         }
 
-
         let site = CrashedPosition.LEFT;
+
         if (this.fail === GamePosition.BR || this.fail === GamePosition.TR) {
             site = CrashedPosition.RIGHT;
         }
