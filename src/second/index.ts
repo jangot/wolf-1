@@ -1,14 +1,9 @@
+import padStart from 'lodash/padStart';
 import './main.scss';
-import {
-    CrashedPosition,
-    CrashedQueue,
-    GAME_EVENT,
-    GamePosition,
-    MessagesQueue,
-} from './type';
-import {Game} from './game';
-import {applyController} from './controller';
-import {element} from './util/index';
+import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue, } from './type';
+import { Game } from './game';
+import { applyController } from './controller';
+import { element } from './util/index';
 
 function renderLine(name: GamePosition, messages: MessagesQueue) {
     messages[name].forEach((item, index) => {
@@ -46,7 +41,9 @@ const lines = [
 const g = new Game();
 
 g.on(GAME_EVENT.START, () => {
-    console.log('Start');
+    element('.error-0').removeClass('happened');
+    element('.error-1').removeClass('happened');
+    element('.error-2').removeClass('happened');
 });
 
 g.on(GAME_EVENT.TICK, () => {
@@ -64,8 +61,14 @@ g.on(GAME_EVENT.TICK, () => {
 g.on(GAME_EVENT.TICK, () => {
     element('.fail').html(g.fail || 'non');
 
-    element('.score .count').html(g.score.toString());
-    element('.score .failed').html(g.errors.toString());
+
+    element('.score .count').html(padStart(g.score.toString(), 4, '0'));
+});
+
+g.on(GAME_EVENT.ERROR, () => {
+    for(let i = 0; i < g.errors; i++) {
+        element(`.error-${i}`).addClass('happened');
+    }
 });
 
 g.on(GAME_EVENT.STOP, () => {

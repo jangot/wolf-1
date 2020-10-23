@@ -5,12 +5,16 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg992"
-   version="1.1"
-   fill="none"
-   viewBox="0 0 500 350"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
    height="350"
-   width="500">
+   viewBox="0 0 500 350"
+   fill="none"
+   version="1.1"
+   id="svg992"
+   sodipodi:docname="bg.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata996">
     <rdf:RDF>
@@ -23,226 +27,260 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1872"
+     inkscape:window-height="1016"
+     id="namedview994"
+     showgrid="false"
+     inkscape:zoom="4.46"
+     inkscape:cx="424.00563"
+     inkscape:cy="-5.1461959"
+     inkscape:window-x="48"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg992" />
   <g
-     id="g985"
-     clip-path="url(#clip0)">
+     clip-path="url(#clip0)"
+     id="g985">
     <rect
-       id="rect877"
-       fill="#148997"
+       y="344"
+       width="500"
        height="6"
-       width="500"
-       y="344" />
+       fill="#148997"
+       id="rect877" />
     <rect
-       id="rect879"
-       fill="#148997"
-       height="2"
+       y="335"
        width="500"
-       y="335" />
-    <path
-       id="path887"
+       height="2"
        fill="#148997"
+       id="rect879" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M221 331H219V335H221H223V333H221V331Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <path
-       id="path893"
        fill="#148997"
+       id="path887" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M246 331H244V333H242V335H244H246V331Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <rect
-       id="rect895"
        fill="#148997"
-       height="2"
-       width="2"
-       y="333"
-       x="249" />
+       id="path893" />
     <rect
-       id="rect897"
-       fill="#148997"
-       height="2"
-       width="2"
+       x="249"
        y="333"
-       x="254" />
+       width="2"
+       height="2"
+       fill="#148997"
+       id="rect895" />
     <rect
-       id="rect899"
-       fill="#148997"
-       height="2"
-       width="2"
+       x="254"
        y="333"
-       x="272" />
+       width="2"
+       height="2"
+       fill="#148997"
+       id="rect897" />
     <rect
-       id="rect901"
-       fill="#148997"
-       height="2"
-       width="2"
+       x="272"
        y="333"
-       x="284" />
+       width="2"
+       height="2"
+       fill="#148997"
+       id="rect899" />
+    <rect
+       x="284"
+       y="333"
+       width="2"
+       height="2"
+       fill="#148997"
+       id="rect901" />
     <path
-       id="path903"
-       fill="#148997"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M295 331H293V335H295H297V333H295V331Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <path
-       id="path905"
        fill="#148997"
+       id="path903" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M415 331H413V335H415H417V333H415V331Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <rect
-       id="rect907"
        fill="#148997"
-       height="5"
-       width="2"
+       id="path905" />
+    <rect
+       x="313"
        y="330"
-       x="313" />
-    <path
-       id="path909"
+       width="2"
+       height="5"
        fill="#148997"
+       id="rect907" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M320 330H318V335H320H322V333H320V330Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <path
-       id="path911"
        fill="#148997"
+       id="path909" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M147 330H145V335H147H149V333H147V330Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <path
-       id="path913"
        fill="#148997"
+       id="path911" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
        d="M474 301H485V303H487V305H492V307H491V310H495V317H501V323H499V325V326H504V327H506V332H503V334H501V336H457V334H455V332H454V327H455V323H463V317H465V310H467V307H468V305H472V303H474V301Z"
-       clip-rule="evenodd"
-       fill-rule="evenodd" />
-    <path
-       id="path917"
        fill="#148997"
-       d="M74.4615 281H51.3846V286.769H43.6923V288.692H37.9231V296.385L34.0769 296.385V304.077H24.4615V309.846H20.6154V313.692H22.5385V317.538H11V327.154H12.9231V331H15V335H103V331H107.154V327.154H111V317.538H107.154V313.692V309.846H103.308V306L99.4615 306V302.154H89.8462V306L86 306V304.077V296.385L82.1538 296.385V288.692H78.3077V286.769H74.4615V281Z"
+       id="path913" />
+    <path
+       fill-rule="evenodd"
        clip-rule="evenodd"
-       fill-rule="evenodd" />
+       d="M74.4615 281H51.3846V286.769H43.6923V288.692H37.9231V296.385L34.0769 296.385V304.077H24.4615V309.846H20.6154V313.692H22.5385V317.538H11V327.154H12.9231V331H15V335H103V331H107.154V327.154H111V317.538H107.154V313.692V309.846H103.308V306L99.4615 306V302.154H89.8462V306L86 306V304.077V296.385L82.1538 296.385V288.692H78.3077V286.769H74.4615V281Z"
+       fill="#148997"
+       id="path917" />
     <rect
-       id="rect935"
-       fill="#AFEBE4"
-       height="1"
+       x="54"
+       y="283"
        width="10"
-       y="283"
-       x="54" />
-    <rect
-       id="rect937"
-       fill="#AFEBE4"
        height="1"
-       width="5"
+       fill="#AFEBE4"
+       id="rect935" />
+    <rect
+       x="39"
        y="290"
-       x="39" />
-    <rect
-       id="rect939"
-       fill="#AFEBE4"
+       width="5"
        height="1"
-       width="8"
+       fill="#AFEBE4"
+       id="rect937" />
+    <rect
+       x="26"
        y="306"
-       x="26" />
-    <rect
-       id="rect941"
-       fill="#AFEBE4"
+       width="8"
        height="1"
+       fill="#AFEBE4"
+       id="rect939" />
+    <rect
+       x="74"
+       y="323"
        width="3"
-       y="323"
-       x="74" />
-    <rect
-       id="rect943"
-       fill="#AFEBE4"
        height="1"
-       width="1"
-       y="323"
-       x="78" />
-    <rect
-       id="rect945"
        fill="#AFEBE4"
-       height="1"
+       id="rect941" />
+    <rect
+       x="78"
+       y="323"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect943" />
+    <rect
+       x="61"
        y="329"
-       x="61" />
-    <rect
-       id="rect947"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect945" />
+    <rect
+       x="58"
        y="327"
-       x="58" />
-    <rect
-       id="rect949"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect947" />
+    <rect
+       x="71"
        y="319"
-       x="71" />
-    <rect
-       id="rect951"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect949" />
+    <rect
+       x="35"
        y="318"
-       x="35" />
-    <rect
-       id="rect953"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect951" />
+    <rect
+       x="48"
        y="308"
-       x="48" />
-    <rect
-       id="rect955"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect953" />
+    <rect
+       x="51"
        y="310"
-       x="51" />
-    <rect
-       id="rect957"
-       fill="#AFEBE4"
-       height="1"
        width="1"
-       y="303"
-       x="64" />
-    <rect
-       id="rect959"
-       fill="#AFEBE4"
        height="1"
+       fill="#AFEBE4"
+       id="rect955" />
+    <rect
+       x="64"
+       y="303"
+       width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect957" />
+    <rect
+       x="91"
+       y="303"
        width="3"
-       y="303"
-       x="91" />
-    <rect
-       id="rect961"
-       fill="#AFEBE4"
        height="1"
-       width="1"
-       y="303"
-       x="95" />
-    <rect
-       id="rect963"
        fill="#AFEBE4"
-       height="1"
+       id="rect959" />
+    <rect
+       x="95"
+       y="303"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect961" />
+    <rect
+       x="101"
        y="307"
-       x="101" />
-    <rect
-       id="rect965"
-       fill="#AFEBE4"
-       height="1"
        width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect963" />
+    <rect
+       x="66"
        y="283"
-       x="66" />
+       width="1"
+       height="1"
+       fill="#AFEBE4"
+       id="rect965" />
   </g>
   <defs
      id="defs990">
     <clipPath
        id="clip0">
       <rect
-         id="rect987"
-         fill="white"
+         width="500"
          height="350"
-         width="500" />
+         fill="white"
+         id="rect987" />
     </clipPath>
   </defs>
+  <rect
+     id="rect1219"
+     width="500"
+     height="7"
+     x="0"
+     y="337" />
+  <rect
+     style="fill:#d1fcf7;fill-opacity:1"
+     id="rect5735"
+     width="543.76843"
+     height="6.8567252"
+     x="0"
+     y="337"
+     ry="0" />
 </svg>

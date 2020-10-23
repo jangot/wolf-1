@@ -19,6 +19,7 @@ const lines = [
 ];
 
 const LESSING_TIME = 3;
+const START_TICK_TIME = 1000;
 
 export class Game {
 
@@ -30,6 +31,7 @@ export class Game {
     score: number;
     errors: number;
     debugMode: boolean;
+    firstTick: boolean;
 
     private tickTime: number;
     private timeout: number;
@@ -67,6 +69,7 @@ export class Game {
 
         if (this.isRun && !this.debugMode) {
             this.next();
+            this.firstTick = false;
         }
     }
 
@@ -81,7 +84,7 @@ export class Game {
     }
 
     private resetState() {
-        this.tickTime = 1000;
+        this.tickTime = START_TICK_TIME;
         this.wolfPosition = GamePosition.TL;
         this.messages = {
             [GamePosition.TL]: this.getLineMessages(6),
@@ -89,6 +92,7 @@ export class Game {
             [GamePosition.BL]: this.getLineMessages(6),
             [GamePosition.BR]: this.getLineMessages(6),
         };
+        this.firstTick = true;
         this.score = 0;
         this.errors = 0;
 
@@ -162,7 +166,8 @@ export class Game {
 
     private setNewItem() {
         const v = random(1, 100);
-        if (v < 40) {
+        console.log('this.firstTick', this.firstTick)
+        if (v < 40 && !this.firstTick) {
             return;
         }
 
@@ -208,7 +213,8 @@ export class Game {
             this.lessTime();
         } else {
             this.fail = fail;
-            this.errors++
+            this.errors++;
+            this.emit(GAME_EVENT.ERROR)
         }
     }
 

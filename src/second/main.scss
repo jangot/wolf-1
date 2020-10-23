@@ -50,9 +50,9 @@ html, body {
 
   .logo {
     position: absolute;
-    top: 2vw;
+    top: 4vw;
     left: 2vw;
-    width: 20vw;
+    width: 22vw;
     height: 8vw;
 
     background-image: url("../../src/img/logo.svg");
@@ -186,15 +186,18 @@ html, body {
     position: absolute;
     width: 30%;
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 20px;
+
+    div:first-child {
+      width: #{$width * 2};
+      height: #{$height * 2};
+    }
 
     div {
-      border: 1px red solid;
-      background: white;
       width: $width;
       height: $height;
-
+      //border: 1px black solid;
 
       &:nth-child(4) {
         position: relative;
@@ -207,7 +210,7 @@ html, body {
       }
 
       &.active {
-        background: red;
+        background-size: 100% auto;
       }
     }
 
@@ -216,6 +219,9 @@ html, body {
     &.tr,
     &.br {
       flex-direction: row-reverse;
+      .active:first-child {
+        margin-left: #{$width * -1};
+      }
 
       div {
         &:nth-child(4),
@@ -227,6 +233,10 @@ html, body {
 
     &.tl,
     &.bl {
+      .active:first-child {
+        margin-right: #{$width * -1};
+      }
+
       div {
         &:nth-child(4),
         &:nth-child(5){
@@ -254,6 +264,46 @@ html, body {
     &.br {
       bottom: $shelf-bottom;
       right: 0;
+    }
+  }
+
+  .email {
+    .active:first-child {
+      background-image: url("../../src/img/email-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../src/img/email-item.svg");
+    }
+  }
+
+  .mgate {
+    .active:first-child {
+      background-image: url("../../src/img/mgate-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../src/img/email-item.svg");
+    }
+  }
+
+  .message {
+    .active:first-child {
+      background-image: url("../../src/img/message-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../src/img/message-item.svg");
+    }
+  }
+
+  .phone {
+    .active:first-child {
+      background-image: url("../../src/img/phone-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../src/img/message-item.svg");
     }
   }
 }
@@ -333,11 +383,45 @@ html, body {
   top: 0;
   right: 0;
   z-index: 1000;
+
+  button {
+    font-size: 30px;
+    padding: 10px;
+  }
 }
 
 .score {
   position: absolute;
-  top: 0;
-  left: 50%;
+  top: 4vw;
+  right: 10vw;
   z-index: 800;
+
+
+
+  .count {
+    font-size: 4vw;
+    letter-spacing: 1vw;
+    color: #263746;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 1vw;
+  }
+
+  .errors {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      width: 4vw;
+      height: 2.5vw;
+      background-image: url("../../src/img/error-unactive.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: auto 90%;
+
+      &.happened {
+        background-image: url("../../src/img/error-active.svg");
+      }
+    }
+  }
 }

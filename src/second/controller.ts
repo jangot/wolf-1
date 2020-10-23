@@ -67,18 +67,18 @@ export function applyController(game: Game) {
 
     element('.controls .start').on('click', () => {
         game.start();
-        toggleFullScreen();
+        // toggleFullScreen();
     });
     element('.controls .stop').on('click', () => game.stop());
     element('.controls .next').on('click', () => game.next());
     game.on(GAME_EVENT.START, () => {
         setPosition(element(`.woolf .${GamePosition.TL}`), GamePosition.TL);
     });
-    game.on(GAME_EVENT.STOP, () => {
-        toggleFullScreen();
-    });
-    game.on(GAME_EVENT.FAIL, () => {
-        toggleFullScreen();
-    });
+    // game.on(GAME_EVENT.STOP, () => {
+    //     toggleFullScreen();
+    // });
+    // game.on(GAME_EVENT.FAIL, () => {
+    //     toggleFullScreen();
+    // });
 
 }
