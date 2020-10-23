@@ -2,59 +2,258 @@ $full-width: 1200px;
 $width: 40px;
 $height: 40px;
 
+$sky-color: #fff;
+$lite-trees-color: #d1fcf7;
+$floor-color: #148997;
+
+$shelf-top: 60%;
+$shelf-bottom: 35%;
+
+$layer-first-bg: 100;
+$layer-woolf: 110;
+$layer-shelf-top: 50;
+$layer-shelf-bottom: 60;
+$layer-messages: 110;
+
 * {
   margin: 0;
   padding: 0;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.hide {
+  display: none !important;
+}
+
 .game {
-  width: $full-width;
-  height: 600px;
-  background: darkgray;
+  width: 100%;
+  height: 100%;
+  min-width: 1100px;
+  //height: 600px;
+  background: #d3f0f1;
+  margin: 0 auto;
+  //background-image: url("../../src/img/bg-2.svg");
+  //background-position:top left;
+  //background-repeat:no-repeat;
+  //background-size: 100% auto;
+}
+
+.decoration {
+  width: 100%;
+  height: 100%;
   position: relative;
+  overflow: hidden;
+
+  .logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 400px;
+    height: 140px;
+
+    background-image: url("../../src/img/logo.svg");
+    background-position: top left;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .shelf {
+    width: 30%;
+    position: absolute;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+
+    &-tl {
+      left: 0;
+      bottom: 0;
+      height: $shelf-top;
+      z-index: $layer-shelf-top;
+
+      img {
+        transform: scale(-1, 1)
+      }
+    }
+    &-tr {
+      right: 0;
+      bottom: 0;
+      height: $shelf-top;
+      z-index: $layer-shelf-top;
+    }
+    &-bl {
+      left: 0;
+      bottom: 0;
+      height: $shelf-bottom;
+      z-index: $layer-shelf-bottom;
+
+      img {
+        transform: scale(-1, 1)
+      }
+    }
+    &-br {
+      right: 0;
+      bottom: 0;
+      height: $shelf-bottom;
+      z-index: $layer-shelf-bottom;
+    }
+  }
+
+  .bg-1 {
+    height: 300px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../../src/img/bg.svg");
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    background-size: auto auto;
+    z-index: $layer-first-bg;
+  }
+
+  .floor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 2px $floor-color solid;
+    height: 6px;
+    background: $lite-trees-color;
+    border-bottom: 6px $floor-color solid;
+  }
+}
+
+.woolf {
+  position: absolute;
+  width: 40%;
+  height: 60%;
+  bottom: 0;
+  left: 30%;
+  z-index: $layer-woolf;
+
+  .hero {
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    .body {
+      background-repeat: no-repeat;
+      background-size: auto 65%;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.tl .body {
+      background-image: url("../../src/img/robot-body-tl.svg");
+      background-position: bottom left;
+    }
+
+    &.tr .body {
+      background-image: url("../../src/img/robot-body-tr.svg");
+      background-position: bottom right;
+    }
+
+    &.bl .body {
+      background-image: url("../../src/img/robot-body-bl.svg");
+      background-position: bottom left;
+    }
+
+    &.br .body {
+      background-image: url("../../src/img/robot-body-br.svg");
+      background-position: bottom right;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
 }
 
 .messages {
   display: flex;
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  z-index: $layer-messages;
 
   .coll {
     position: absolute;
-    width: #{$width * 5};
+    width: 30%;
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 
     div {
       border: 1px red solid;
+      background: white;
       width: $width;
       height: $height;
+
+
+      &:nth-child(4) {
+        position: relative;
+        top: 2vw;
+      }
+
+      &:nth-child(5) {
+        position: relative;
+        top: 6vw;
+      }
 
       &.active {
         background: red;
       }
     }
 
+
+    $angle: 33deg;
+    &.tr,
+    &.br {
+      flex-direction: row-reverse;
+
+      div {
+        &:nth-child(4),
+        &:nth-child(5){
+          transform: rotate(#{$angle * -1});
+        }
+      }
+    }
+
+    &.tl,
+    &.bl {
+      div {
+        &:nth-child(4),
+        &:nth-child(5){
+          transform: rotate($angle);
+        }
+      }
+    }
+
     &.tl {
-      top: 0;
+      bottom: $shelf-top;
       left: 0;
     }
 
     &.tr {
-      top: 0;
+      bottom: $shelf-top;
       right: 0;
-      flex-direction: row-reverse;
+
     }
 
     &.bl {
-      top: #{$height *3};
+      bottom: $shelf-bottom;
       left: 0;
     }
 
     &.br {
-      top: #{$height *3};
+      bottom: $shelf-bottom;
       right: 0;
-      flex-direction: row-reverse;
     }
   }
 }
@@ -94,53 +293,13 @@ $height: 40px;
   }
 }
 
-.woolf {
-  position: absolute;
-  width: #{$full-width - $width * 10};
-  height: #{$height * 4};
-  top: #{$height + 20};
-  left: 50%;
-  margin-left: #{($full-width - $width * 10) / 2 * -1};
-
-  div {
-    border: 1px green solid;
-    width: $width;
-    height: $height;
-    position: absolute;
-
-    &.tl {
-      top: 0;
-      left: 0;
-    }
-
-    &.tr {
-      top: 0;
-      right: 0;
-    }
-
-    &.bl {
-      bottom: 0;
-      left: 0;
-    }
-
-    &.br {
-      bottom: 0;
-      right: 0;
-    }
-
-    &.active {
-      background: green;
-    }
-  }
-}
-
 .tapper {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 900;
   background: yellow;
   opacity: 0.2;
 
@@ -169,5 +328,26 @@ $height: 40px;
       bottom: 0;
       right: 0;
     }
+  }
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+  width: 300px;
+  height: 200px;
+
+  div {
+    width: 100%;
+    height: 100px;
   }
 }

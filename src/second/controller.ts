@@ -35,9 +35,9 @@ const l: ControllerItem[] = [
 
 export function applyController(game: Game) {
     function setPosition(el: El, position: GamePosition) {
-        if (!game.isRun) {
-            return;
-        }
+        // if (!game.isRun) {
+        //     return;
+        // }
         game.setWolfPosition(position);
         element('.woolf .active').removeClass('active');
         el.addClass('active');
@@ -57,6 +57,7 @@ export function applyController(game: Game) {
 
     element('.controls .start').on('click', () => game.start());
     element('.controls .stop').on('click', () => game.stop());
+    element('.controls .next').on('click', () => game.next());
     game.on(GAME_EVENT.START, () => {
         setPosition(element(`.woolf .${GamePosition.TL}`), GamePosition.TL);
     });

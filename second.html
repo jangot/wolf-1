@@ -3,49 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <title>Second</title>
-    <meta name="viewport" content="width=1200, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="game">
-    <div class="score"></div>
-    <div class="fail"></div>
-    <div class="messages">
-        <div class="coll tl">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+    <div class="decoration">
+        <div class="logo"></div>
+
+        <div class="bg-1"></div>
+
+        <div class="shelf shelf-tl">
+            <img src="./src/img/shelf.svg" alt="">
         </div>
-        <div class="coll bl">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="shelf shelf-tr">
+            <img src="./src/img/shelf.svg" alt="">
         </div>
-        <div class="coll tr">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="shelf shelf-bl">
+            <img src="./src/img/shelf.svg" alt="">
         </div>
-        <div class="coll br">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="shelf shelf-br">
+            <img src="./src/img/shelf.svg" alt="">
+        </div>
+
+        <div class="woolf">
+            <div class="tl hero">
+                <div class="body"></div>
+                <div class="hand"></div>
+            </div>
+            <div class="bl hero">
+                <div class="body"></div>
+                <div class="hand"></div>
+            </div>
+            <div class="tr hero">
+                <div class="body"></div>
+                <div class="hand"></div>
+            </div>
+            <div class="br hero active">
+                <div class="body"></div>
+                <div class="hand"></div>
+            </div>
+        </div>
+
+        <div class="messages">
+            <div class="coll tl">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="coll bl">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="coll tr">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="coll br">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+
+        <div class="floor"></div>
+    </div>
+    <div class="score">
+        <div>
+            Score
+            <span class="count">0</span>
+        </div>
+        <div>
+            Errors
+            <span class="failed">0</span>
         </div>
     </div>
-    <div class="woolf">
-        <div class="tl"></div>
-        <div class="bl"></div>
-        <div class="tr"></div>
-        <div class="br"></div>
-    </div>
-    <div class="crashed">
+    <div class="fail hide"></div>
+
+    <div class="crashed hide">
         <div class="coll left">
             <div></div>
             <div></div>
@@ -70,6 +115,7 @@
     <div class="controls">
         <button class="start">Start</button>
         <button class="stop">Stop</button>
+        <button class="next">next</button>
         <h4>Controls</h4>
         <p>On a computer use: QAPL keys.</p>
         <p>On a phone tap to screen.</p>

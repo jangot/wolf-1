@@ -29,14 +29,16 @@ export class Game {
     fail?: GamePosition;
     score: number;
     errors: number;
+    debugMode: boolean;
 
     private tickTime: number;
     private timeout: number;
     private events: Event[];
 
-    constructor() {
+    constructor(debug: boolean = false) {
         this.events = [];
         this.resetState();
+        this.debugMode = debug;
     }
 
     on(name: GAME_EVENT, cb: () => void) {
@@ -62,11 +64,16 @@ export class Game {
     tick() {
         this.update();
         this.emit(GAME_EVENT.TICK);
-        if (this.isRun) {
-            this.timeout = setTimeout(() => {
-                this.tick();
-            }, this.tickTime);
+
+        if (this.isRun && !this.debugMode) {
+            this.next();
         }
+    }
+
+    next() {
+        this.timeout = setTimeout(() => {
+            this.tick();
+        }, this.tickTime);
     }
 
     setWolfPosition(position: GamePosition) {
@@ -127,6 +134,7 @@ export class Game {
         this.updateLine(this.messages[GamePosition.TR]);
         this.updateLine(this.messages[GamePosition.BL]);
         this.updateLine(this.messages[GamePosition.BR]);
+        this.debug('messages', this.messages);
     }
 
     private updateCrashed() {
@@ -182,10 +190,13 @@ export class Game {
         let fail = null;
         lines.forEach((line) => {
             const lastEl = last(this.messages[line]);
+            this.debug('last element', line, lastEl.status);
             if (lastEl.status) {
                 fail = line;
             }
         });
+
+
 
         if (!fail) {
             this.fail = null;
@@ -213,6 +224,12 @@ export class Game {
     private lessTime() {
         if (this.tickTime > 200) {
             this.tickTime -= LESSING_TIME;
+        }
+    }
+
+    private debug(...args: any[]) {
+        if (this.debugMode) {
+            console.log(...args)
         }
     }
 }

@@ -63,7 +63,9 @@ g.on(GAME_EVENT.TICK, () => {
 
 g.on(GAME_EVENT.TICK, () => {
     element('.fail').html(g.fail || 'non');
-    element('.score').html('v4' + ' / ' + g.score + ' / ' + g.errors);
+
+    element('.score .count').html(g.score.toString());
+    element('.score .failed').html(g.errors.toString());
 });
 
 g.on(GAME_EVENT.STOP, () => {
