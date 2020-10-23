@@ -300,14 +300,13 @@ html, body {
   bottom: 0;
   left: 0;
   z-index: 900;
-  background: yellow;
-  opacity: 0.2;
+  background: white;
+  opacity: 0;
 
   div {
     position: absolute;
     width: 50%;
     height: 50%;
-    border: 1px yellowgreen solid;
 
     &.tl {
       top: 0;
