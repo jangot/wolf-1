@@ -33,6 +33,16 @@ const l: ControllerItem[] = [
     }
 ];
 
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
 export function applyController(game: Game) {
     function setPosition(el: El, position: GamePosition) {
         // if (!game.isRun) {
@@ -55,11 +65,20 @@ export function applyController(game: Game) {
         });
     });
 
-    element('.controls .start').on('click', () => game.start());
+    element('.controls .start').on('click', () => {
+        game.start();
+        toggleFullScreen();
+    });
     element('.controls .stop').on('click', () => game.stop());
     element('.controls .next').on('click', () => game.next());
     game.on(GAME_EVENT.START, () => {
         setPosition(element(`.woolf .${GamePosition.TL}`), GamePosition.TL);
+    });
+    game.on(GAME_EVENT.STOP, () => {
+        toggleFullScreen();
+    });
+    game.on(GAME_EVENT.FAIL, () => {
+        toggleFullScreen();
     });
 
 }
