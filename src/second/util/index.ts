@@ -1,3 +1,5 @@
+import throttle from 'lodash/throttle';
+
 export function addClass(element: Element, name: string): Element {
     const arr = element.className.split(' ');
     if (arr.indexOf(name) == -1) {
@@ -16,10 +18,10 @@ export function removeClass(element: Element, name: string): Element {
     return element;
 }
 
+
+
 export function onDeviceOrientation(cb: (e: any) => void) {
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener("deviceorientation", cb, true);
-    }
+    window.addEventListener('resize', throttle(cb, 500), true);
 }
 
 

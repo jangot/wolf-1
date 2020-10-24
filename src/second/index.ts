@@ -43,10 +43,6 @@ const lines = [
 startSession()
     .then(() => {
 
-        onDeviceOrientation(() => {
-            console.log('orientation');
-        });
-
         const g = new Game();
 
         g.on(GAME_EVENT.START, () => {

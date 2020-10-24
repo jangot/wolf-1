@@ -83,7 +83,6 @@ export function applyController(game: Game) {
     element('.pause').on('click', () => game.pause());
     element('.resume').on('click', () => game.resume());
     onDeviceOrientation(() => {
-        console.log('-------')
         const deviceInfo = collectInfo();
         if (deviceInfo.isVertical) {
             game.pause();
