@@ -15,12 +15,18 @@ function detectMob() {
     });
 }
 
-export async function startSession() {
-    if (detectMob()) {
-        element('body').addClass('mobile-device');
-        element('.device').html('mobile-device');
-    } else {
-        element('body').addClass('desktop-device');
-        element('.device').html('desktop-device');
+function collectInfo() {
+    const isMobile = detectMob()
+    return {
+        isMobile,
+        bodyClass: isMobile ? 'mobile-device' : 'desktop-device',
+        mainWidth: element('.game').el.clientWidth
     }
+}
+
+export async function startSession() {
+    const deviceInfo = collectInfo();
+
+    element('body').addClass(deviceInfo.bodyClass);
+    element('.device').html(JSON.stringify(deviceInfo, null, 4));
 }

@@ -17,7 +17,7 @@ export function removeClass(element: Element, name: string): Element {
 }
 
 export class El {
-    private el: Element;
+    public el: Element;
     constructor(selector: string) {
         this.el = document.querySelector(selector);
     }
