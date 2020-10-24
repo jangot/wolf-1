@@ -4,7 +4,7 @@ import padStart from 'lodash/padStart';
 import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue, } from './type';
 import { Game } from './game';
 import { applyController } from './controller';
-import { element } from './util/index';
+import { element, onDeviceOrientation } from './util/index';
 import { startSession } from './start-session';
 
 function renderLine(name: GamePosition, messages: MessagesQueue) {
@@ -42,6 +42,10 @@ const lines = [
 
 startSession()
     .then(() => {
+
+        onDeviceOrientation(() => {
+            console.log('orientation');
+        });
 
         const g = new Game();
 

@@ -1,4 +1,4 @@
-import { element } from './util';
+import { element, onDeviceOrientation } from './util';
 function detectMob() {
     const toMatch = [
         /Android/i,
@@ -16,17 +16,27 @@ function detectMob() {
 }
 
 function collectInfo() {
+    console.log('collectInfo')
     const isMobile = detectMob()
     return {
         isMobile,
         bodyClass: isMobile ? 'mobile-device' : 'desktop-device',
-        mainWidth: element('.game').el.clientWidth
+        mainWidth: element('.game').el.clientWidth,
+        mainHeight: element('.game').el.clientHeight,
     }
 }
 
-export async function startSession() {
+function renderInfo() {
     const deviceInfo = collectInfo();
 
     element('body').addClass(deviceInfo.bodyClass);
     element('.device').html(JSON.stringify(deviceInfo, null, 4));
+}
+
+export async function startSession() {
+    renderInfo()
+
+    onDeviceOrientation(() => {
+        renderInfo();
+    });
 }

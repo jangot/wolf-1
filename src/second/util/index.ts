@@ -16,6 +16,14 @@ export function removeClass(element: Element, name: string): Element {
     return element;
 }
 
+export function onDeviceOrientation(cb: (e: any) => void) {
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", cb, true);
+    }
+}
+
+
+
 export class El {
     public el: Element;
     constructor(selector: string) {
