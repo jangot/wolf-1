@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <title>Second</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        const VERSION = 15;
+    </script>
 </head>
 <body>
 <div class="game">
     <div class="greeting">
+        <div class="version">
+            <script>
+                document.write(VERSION);
+            </script>
+        </div>
         <div class="device"></div>
     </div>
     <div class="decoration">
@@ -107,7 +115,9 @@
         <button class="next hide">next</button>
     </div>
 </div>
+<script>
+    document.write('<script src="dist/bundle-second.js?v=' + VERSION + '"></scr' + 'ipt>');
+</script>
 
-<script src="dist/bundle-second.js?v=14"></script>
 </body>
 </html>
