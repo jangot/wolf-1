@@ -45,6 +45,8 @@ g.on(GAME_EVENT.START, () => {
     element('.error-0').removeClass('happened');
     element('.error-1').removeClass('happened');
     element('.error-2').removeClass('happened');
+    element('.greeting').addClass('hide');
+    element('.controls').addClass('hide');
 });
 
 g.on(GAME_EVENT.TICK, () => {
@@ -73,7 +75,8 @@ g.on(GAME_EVENT.ERROR, () => {
 });
 
 g.on(GAME_EVENT.STOP, () => {
-    console.log('SCORE:', g.score)
+    element('.greeting').removeClass('hide');
+    element('.controls').removeClass('hide');
 });
 
 applyController(g);

@@ -1,11 +1,9 @@
-
+@import "vars";
 .score {
   position: absolute;
   top: 4vw;
   right: 10vw;
-  z-index: 800;
-
-
+  z-index: $layer-score;
 
   .count {
     font-size: 4vw;

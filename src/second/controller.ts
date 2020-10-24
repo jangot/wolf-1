@@ -45,9 +45,9 @@ function toggleFullScreen() {
 
 export function applyController(game: Game) {
     function setPosition(el: El, position: GamePosition) {
-        // if (!game.isRun) {
-        //     return;
-        // }
+        if (!game.isRun) {
+            return;
+        }
         game.setWolfPosition(position);
         element('.woolf .active').removeClass('active');
         el.addClass('active');
@@ -57,7 +57,6 @@ export function applyController(game: Game) {
         const el = element(`.woolf .${position}`);
 
         element(`.keyboard .${position}`).on('touchstart', () => setPosition(el, position));
-        // element(`.keyboard .${position}`).on('click', setPosition);
         window.addEventListener('keypress', (e) => {
             if (e.code === code) {
                 setPosition(el, position);
@@ -77,8 +76,8 @@ export function applyController(game: Game) {
     game.on(GAME_EVENT.STOP, () => {
         toggleFullScreen();
     });
-    game.on(GAME_EVENT.FAIL, () => {
-        toggleFullScreen();
-    });
+    // game.on(GAME_EVENT.FAIL, () => {
+    //     toggleFullScreen();
+    // });
 
 }

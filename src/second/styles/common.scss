@@ -1,3 +1,5 @@
+@import "vars";
+
 * {
   margin: 0;
   padding: 0;
@@ -15,12 +17,16 @@ html, body {
 .game {
   width: 100vw;
   height: 100vh;
-  //min-width: 1100px;
-  //height: 600px;
   background: #d3f0f1;
   margin: 0 auto;
-  //background-image: url("../../../src/img/bg-2.svg");
-  //background-position:top left;
-  //background-repeat:no-repeat;
-  //background-size: 100% auto;
+}
+
+.greeting {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $layer-greeting;
+  background: rgba(255, 255, 255, 0.5);
 }

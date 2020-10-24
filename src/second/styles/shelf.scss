@@ -1,0 +1,37 @@
+@import "vars";
+
+.shelf {
+  width: 30%;
+  position: absolute;
+  overflow: hidden;
+  background-image: url("../../../src/img/shelf.svg");
+  background-repeat:no-repeat;
+  background-size: 100% auto;
+
+  &-tl {
+    left: 0;
+    bottom: 0;
+    height: $shelf-top;
+    z-index: $layer-shelf-top;
+    transform: scale(-1, 1);
+  }
+  &-tr {
+    right: 0;
+    bottom: 0;
+    height: $shelf-top;
+    z-index: $layer-shelf-top;
+  }
+  &-bl {
+    left: 0;
+    bottom: 0;
+    height: $shelf-bottom;
+    z-index: $layer-shelf-bottom;
+    transform: scale(-1, 1);
+  }
+  &-br {
+    right: 0;
+    bottom: 0;
+    height: $shelf-bottom;
+    z-index: $layer-shelf-bottom;
+  }
+}

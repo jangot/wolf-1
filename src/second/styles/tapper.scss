@@ -1,3 +1,4 @@
+@import "vars";
 
 .tapper {
   position: absolute;
@@ -5,7 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 900;
+  z-index: $layer-greeting;
 
   div {
     position: absolute;
