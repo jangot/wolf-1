@@ -1,0 +1,36 @@
+
+.score {
+  position: absolute;
+  top: 4vw;
+  right: 10vw;
+  z-index: 800;
+
+
+
+  .count {
+    font-size: 4vw;
+    letter-spacing: 1vw;
+    color: #263746;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 1vw;
+  }
+
+  .errors {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      width: 4vw;
+      height: 2.5vw;
+      background-image: url("../../../src/img/error-unactive.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: auto 90%;
+
+      &.happened {
+        background-image: url("../../../src/img/error-active.svg");
+      }
+    }
+  }
+}

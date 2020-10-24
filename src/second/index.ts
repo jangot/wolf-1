@@ -1,5 +1,6 @@
+import './styles/index.scss';
+
 import padStart from 'lodash/padStart';
-import './main.scss';
 import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue, } from './type';
 import { Game } from './game';
 import { applyController } from './controller';

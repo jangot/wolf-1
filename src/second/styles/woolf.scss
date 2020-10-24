@@ -1,0 +1,47 @@
+@import "vars";
+
+.woolf {
+  position: absolute;
+  width: 40%;
+  height: 60%;
+  bottom: 0;
+  left: 30%;
+  z-index: $layer-woolf;
+
+  .hero {
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    .body {
+      background-repeat: no-repeat;
+      background-size: auto 65%;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.tl .body {
+      background-image: url("../../../src/img/robot-body-tl.svg");
+      background-position: bottom left;
+    }
+
+    &.tr .body {
+      background-image: url("../../../src/img/robot-body-tr.svg");
+      background-position: bottom right;
+    }
+
+    &.bl .body {
+      background-image: url("../../../src/img/robot-body-bl.svg");
+      background-position: bottom left;
+    }
+
+    &.br .body {
+      background-image: url("../../../src/img/robot-body-br.svg");
+      background-position: bottom right;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+}

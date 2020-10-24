@@ -1,0 +1,43 @@
+@import "vars";
+
+.crashed {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: $layer-messages;
+
+  .coll {
+    display: flex;
+    position: absolute;
+    width: 33%;
+
+    &.left {
+      flex-direction: row-reverse;
+      left: 0;
+      bottom: 0;
+    }
+
+    &.right {
+      right: 0;
+      bottom: 0;
+    }
+
+    div {
+      width: $width;
+      height: $height;
+      display: none;
+      background-image: url("../../../src/img/error-unactive.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: auto 90%;
+
+      &:first-child {
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+}

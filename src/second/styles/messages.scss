@@ -1,0 +1,134 @@
+@import "vars";
+
+.messages {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: $layer-messages;
+
+  .coll {
+    position: absolute;
+    width: 30%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    div:first-child {
+      width: #{$width * 2};
+      height: #{$height * 2};
+    }
+
+    div {
+      width: $width;
+      height: $height;
+      //border: 1px black solid;
+
+      &:nth-child(4) {
+        position: relative;
+        top: 2vw;
+      }
+
+      &:nth-child(5) {
+        position: relative;
+        top: 6vw;
+      }
+
+      &.active {
+        background-size: 100% auto;
+      }
+    }
+
+
+    $angle: 33deg;
+    &.tr,
+    &.br {
+      flex-direction: row-reverse;
+      .active:first-child {
+        margin-left: #{$width * -1};
+      }
+
+      div {
+        &:nth-child(4),
+        &:nth-child(5){
+          transform: rotate(#{$angle * -1});
+        }
+      }
+    }
+
+    &.tl,
+    &.bl {
+      .active:first-child {
+        margin-right: #{$width * -1};
+      }
+
+      div {
+        &:nth-child(4),
+        &:nth-child(5){
+          transform: rotate($angle);
+        }
+      }
+    }
+
+    &.tl {
+      bottom: $shelf-top;
+      left: 0;
+    }
+
+    &.tr {
+      bottom: $shelf-top;
+      right: 0;
+
+    }
+
+    &.bl {
+      bottom: $shelf-bottom;
+      left: 0;
+    }
+
+    &.br {
+      bottom: $shelf-bottom;
+      right: 0;
+    }
+  }
+
+  .email {
+    .active:first-child {
+      background-image: url("../../../src/img/email-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../../src/img/email-item.svg");
+    }
+  }
+
+  .mgate {
+    .active:first-child {
+      background-image: url("../../../src/img/mgate-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../../src/img/email-item.svg");
+    }
+  }
+
+  .message {
+    .active:first-child {
+      background-image: url("../../../src/img/message-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../../src/img/message-item.svg");
+    }
+  }
+
+  .phone {
+    .active:first-child {
+      background-image: url("../../../src/img/phone-sender.svg");
+    }
+
+    .active {
+      background-image: url("../../../src/img/message-item.svg");
+    }
+  }
+}
