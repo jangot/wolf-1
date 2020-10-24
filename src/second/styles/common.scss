@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  color: $color-ib-grey;
 }
 
 html, body {
@@ -14,10 +15,25 @@ html, body {
   display: none !important;
 }
 
+.turn-info {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: white;
+  display: none;
+  z-index: 100000;
+
+  .vertically.mobile-device & {
+    display: block;
+  }
+}
+
 .game {
   width: 100vw;
   height: 100vh;
-  background: #d3f0f1;
+  background: $color-ib-blue;
   margin: 0 auto;
   position: relative;
 
@@ -44,4 +60,16 @@ html, body {
   top: 0;
   left: 0;
   z-index: 20000;
+}
+
+.show-mobile {
+  .desktop-device & {
+    display: none !important;
+  }
+}
+
+.show-desktop {
+  .mobile-device & {
+    display: none !important;
+  }
 }

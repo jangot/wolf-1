@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <!--    <meta name="viewport" content="width=1000, initial-scale=1, user-scalable=no">-->
     <script>
-        const VERSION = 18;
+        const VERSION = 20;
     </script>
 </head>
 <body>
+<div class="turn-info">
+    please turn your device
+</div>
 <div class="game">
-    <div class="app-info">
+    <div class="app-info hide">
         <div class="version">
             <script>
                 document.write(VERSION);
@@ -115,6 +118,16 @@
     </div>
     <div class="controls">
         <button class="start">Start</button>
+        <div class="controls-info show-mobile">
+            To control the robot tap to shelves
+        </div>
+        <div class="controls-info show-desktop">
+            To control the robot use keys
+            <b>Q</b>
+            <b>A</b>
+            <b>P</b>
+            <b>L</b>
+        </div>
         <button class="stop hide">Stop</button>
         <button class="next hide">next</button>
     </div>
