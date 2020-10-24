@@ -18,7 +18,9 @@ function detectMob() {
 export async function startSession() {
     if (detectMob()) {
         element('body').addClass('mobile-device');
+        element('.device').html('mobile-device');
     } else {
         element('body').addClass('desktop-device');
+        element('.device').html('desktop-device');
     }
 }
