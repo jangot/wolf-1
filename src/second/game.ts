@@ -32,6 +32,7 @@ export class Game {
     errors: number;
     debugMode: boolean;
     firstTick: boolean;
+    started: boolean;
 
     private tickTime: number;
     private timeout: number;
@@ -52,6 +53,7 @@ export class Game {
 
     start() {
         this.isRun = true;
+        this.started = true;
         this.resetState();
         this.emit(GAME_EVENT.START);
         this.tick();
@@ -59,8 +61,28 @@ export class Game {
 
     stop() {
         this.isRun = false;
+        this.started = false;
         clearTimeout(this.timeout);
         this.emit(GAME_EVENT.STOP);
+    }
+
+    pause() {
+        if (!this.isRun || !this.started) {
+            return;
+        }
+        console.log('pause')
+        this.isRun = false;
+        clearTimeout(this.timeout);
+        this.emit(GAME_EVENT.PAUSE);
+    }
+
+    resume() {
+        if (this.isRun || !this.started) {
+            return;
+        }
+        this.isRun = true;
+        this.emit(GAME_EVENT.RESUME);
+        this.tick();
     }
 
     tick() {

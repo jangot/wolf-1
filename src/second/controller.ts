@@ -1,6 +1,7 @@
 import {GAME_EVENT, GamePosition} from './type';
 import {Game} from './game';
-import {element, El} from './util/index';
+import { element, El, onDeviceOrientation } from './util/index';
+import { collectInfo } from './util/device-info';
 
 type ControllerItem = {
     position: GamePosition;
@@ -70,11 +71,25 @@ export function applyController(game: Game) {
     });
     element('.controls .stop').on('click', () => game.stop());
     element('.controls .next').on('click', () => game.next());
+
+    let started = true;
     game.on(GAME_EVENT.START, () => {
         setPosition(element(`.woolf .${GamePosition.TL}`), GamePosition.TL);
     });
     game.on(GAME_EVENT.STOP, () => {
         toggleFullScreen();
+    });
+
+    element('.pause').on('click', () => game.pause());
+    element('.resume').on('click', () => game.resume());
+    onDeviceOrientation(() => {
+        console.log('-------')
+        const deviceInfo = collectInfo();
+        if (deviceInfo.isVertical) {
+            game.pause();
+        } else {
+            game.resume();
+        }
     });
     // game.on(GAME_EVENT.FAIL, () => {
     //     toggleFullScreen();
