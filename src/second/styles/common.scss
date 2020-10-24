@@ -20,7 +20,10 @@ html, body {
   background: #d3f0f1;
   margin: 0 auto;
   position: relative;
-  min-width: 1000px;
+
+  .desktop-device & {
+    min-width: 1000px;
+  }
 }
 
 .greeting {

@@ -5,6 +5,7 @@ import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue,
 import { Game } from './game';
 import { applyController } from './controller';
 import { element } from './util/index';
+import { startSession } from './start-session';
 
 function renderLine(name: GamePosition, messages: MessagesQueue) {
     messages[name].forEach((item, index) => {
@@ -39,44 +40,52 @@ const lines = [
     GamePosition.BR,
 ];
 
-const g = new Game();
+startSession()
+    .then(() => {
 
-g.on(GAME_EVENT.START, () => {
-    element('.error-0').removeClass('happened');
-    element('.error-1').removeClass('happened');
-    element('.error-2').removeClass('happened');
-    element('.greeting').addClass('hide');
-    element('.controls').addClass('hide');
-});
+        const g = new Game();
 
-g.on(GAME_EVENT.TICK, () => {
-    renderLine(GamePosition.TL, g.messages);
-    renderLine(GamePosition.TR, g.messages);
-    renderLine(GamePosition.BL, g.messages);
-    renderLine(GamePosition.BR, g.messages);
-});
+        g.on(GAME_EVENT.START, () => {
+            element('.error-0').removeClass('happened');
+            element('.error-1').removeClass('happened');
+            element('.error-2').removeClass('happened');
+            element('.greeting').addClass('hide');
+            element('.controls').addClass('hide');
+        });
 
-g.on(GAME_EVENT.TICK, () => {
-    renderCrashedLine(CrashedPosition.LEFT, g.crashed);
-    renderCrashedLine(CrashedPosition.RIGHT, g.crashed);
-});
+        g.on(GAME_EVENT.TICK, () => {
+            renderLine(GamePosition.TL, g.messages);
+            renderLine(GamePosition.TR, g.messages);
+            renderLine(GamePosition.BL, g.messages);
+            renderLine(GamePosition.BR, g.messages);
+        });
 
-g.on(GAME_EVENT.TICK, () => {
-    element('.fail').html(g.fail || 'non');
+        g.on(GAME_EVENT.TICK, () => {
+            renderCrashedLine(CrashedPosition.LEFT, g.crashed);
+            renderCrashedLine(CrashedPosition.RIGHT, g.crashed);
+        });
+
+        g.on(GAME_EVENT.TICK, () => {
+            element('.fail').html(g.fail || 'non');
 
 
-    element('.score .count').html(padStart(g.score.toString(), 4, '0'));
-});
+            element('.score .count').html(padStart(g.score.toString(), 4, '0'));
+        });
 
-g.on(GAME_EVENT.ERROR, () => {
-    for(let i = 0; i < g.errors; i++) {
-        element(`.error-${i}`).addClass('happened');
-    }
-});
+        g.on(GAME_EVENT.ERROR, () => {
+            for(let i = 0; i < g.errors; i++) {
+                element(`.error-${i}`).addClass('happened');
+            }
+        });
 
-g.on(GAME_EVENT.STOP, () => {
-    element('.greeting').removeClass('hide');
-    element('.controls').removeClass('hide');
-});
+        g.on(GAME_EVENT.STOP, () => {
+            element('.greeting').removeClass('hide');
+            element('.controls').removeClass('hide');
+        });
 
-applyController(g);
+        applyController(g);
+    })
+    .catch((e) => {
+        console.log('Error');
+        console.log(e);
+    });
