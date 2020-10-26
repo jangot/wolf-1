@@ -10,6 +10,7 @@ import {
     MessagesQueue,
     MessageType
 } from './type';
+import { Server } from './server';
 
 const lines = [
     GamePosition.TL,
@@ -33,8 +34,9 @@ export class Game {
     debugMode: boolean;
     firstTick: boolean;
     started: boolean;
+    server: Server;
+    tickTime: number;
 
-    private tickTime: number;
     private timeout: number;
     private events: Event[];
 
@@ -44,11 +46,20 @@ export class Game {
         this.debugMode = debug;
     }
 
-    on(name: GAME_EVENT, cb: () => void) {
+    on(name: GAME_EVENT, cb: () => void): () => void {
         this.events.push({
             name,
             cb
         });
+
+        return () => {
+            this.events = this.events.filter(it => it.cb !== cb);
+        }
+    }
+
+    async initConnection() {
+        this.server = new Server(this);
+        await this.server.start();
     }
 
     start() {
@@ -188,7 +199,6 @@ export class Game {
 
     private setNewItem() {
         const v = random(1, 100);
-        console.log('this.firstTick', this.firstTick)
         if (v < 40 && !this.firstTick) {
             return;
         }
@@ -250,8 +260,12 @@ export class Game {
     }
 
     private lessTime() {
-        if (this.tickTime > 200) {
-            this.tickTime -= LESSING_TIME;
+        if (this.tickTime > 700) {
+            this.tickTime -= 3;
+        } else if (this.tickTime > 500) {
+            this.tickTime -= 2
+        } else if (this.tickTime > 300) {
+            this.tickTime -= 1
         }
     }
 

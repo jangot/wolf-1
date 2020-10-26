@@ -35,13 +35,13 @@ const l: ControllerItem[] = [
 ];
 
 function toggleFullScreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
-    }
+    // if (!document.fullscreenElement) {
+    //     document.documentElement.requestFullscreen();
+    // } else {
+    //     if (document.exitFullscreen) {
+    //         document.exitFullscreen();
+    //     }
+    // }
 }
 
 export function applyController(game: Game) {
@@ -66,8 +66,23 @@ export function applyController(game: Game) {
     });
 
     element('.controls .start').on('click', () => {
-        game.start();
-        toggleFullScreen();
+        const b = <HTMLInputElement> document.querySelector('.controls .start')
+        b.disabled = true;
+        element('.loading').removeClass('visible-hide');
+        game
+            .initConnection()
+            .then(() => {
+                b.disabled = false;
+                toggleFullScreen();
+                game.start();
+                element('.loading').addClass('visible-hide');
+            })
+            .catch((e) => {
+                element('.loading').addClass('visible-hide');
+                console.log('ERROR');
+                console.log(e)
+            });
+
     });
     element('.controls .stop').on('click', () => game.stop());
     element('.controls .next').on('click', () => game.next());
