@@ -73,18 +73,21 @@ export class Server {
             score,
             errors,
             token,
-            proof: this.getProof()
+            timestamp: new Date().getTime(),
+                        proof: this.getProof()
         }
     }
 
     protected getProof() {
+        // TODO hide the logic
         const items = [
             ...this.items
         ];
 
-        const [firstIndex, secondIndex, action] = items.slice(-3);
+        const [firstIndex, secondIndex, actionIndex] = items.slice(-3);
         const first = this.items[firstIndex];
         const second = this.items[secondIndex];
+        const action = this.items[actionIndex];
 
         switch (action) {
             case SUM:
