@@ -41,7 +41,7 @@ export class Server {
             this.tickCount = 0;
             console.log(this.getData())
 
-            const { data } = await this.client.post('/stat', this.getData());
+            const { data } = await this.client.post('/tick', this.getData());
             this.items = data.items;
         }
     }
@@ -74,7 +74,7 @@ export class Server {
             errors,
             token,
             timestamp: new Date().getTime(),
-                        proof: this.getProof()
+            proof: this.getProof()
         }
     }
 

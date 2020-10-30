@@ -34,14 +34,18 @@ const l: ControllerItem[] = [
     }
 ];
 
+const deviceInfo = collectInfo();
 function toggleFullScreen() {
-    // if (!document.fullscreenElement) {
-    //     document.documentElement.requestFullscreen();
-    // } else {
-    //     if (document.exitFullscreen) {
-    //         document.exitFullscreen();
-    //     }
-    // }
+    if (!deviceInfo.isMobile) {
+        return;
+    }
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
 }
 
 export function applyController(game: Game) {
@@ -105,8 +109,8 @@ export function applyController(game: Game) {
             game.resume();
         }
     });
-    // game.on(GAME_EVENT.FAIL, () => {
-    //     toggleFullScreen();
-    // });
+    game.on(GAME_EVENT.FAIL, () => {
+        toggleFullScreen();
+    });
 
 }

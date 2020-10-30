@@ -1,4 +1,5 @@
 const path = require('path');
+const WebpackObfuscator = require('webpack-obfuscator');
 
 module.exports = {
     entry: {
@@ -30,9 +31,24 @@ module.exports = {
                     loader: 'svg-url-loader',
                     options: {}
                 }
-            }
+            },
+            // {
+            //     test: /\.js$/,
+            //     enforce: 'post',
+            //     use: {
+            //         loader: WebpackObfuscator.loader,
+            //         options: {
+            //             rotateStringArray: true
+            //         }
+            //     }
+            // }
         ],
     },
+    plugins: [
+        new WebpackObfuscator({
+            rotateStringArray: true
+        }, ['bundle-second.js'])
+    ],
     resolve: {
         extensions: [ '.tsx', '.ts', '.js', 'scss'],
     },
