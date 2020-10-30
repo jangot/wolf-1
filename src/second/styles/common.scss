@@ -38,7 +38,8 @@ html, body {
 .game {
   width: 100vw;
   height: 100vh;
-  background: $color-ib-blue;
+  //background: $color-ib-blue;
+  background: linear-gradient(180deg,#8FE7EC,#ECF1F1);
   margin: 0 auto;
   position: relative;
 
