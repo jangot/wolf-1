@@ -27,54 +27,46 @@
     div {
       width: $width;
       height: $height;
-      //visibility: hidden;
+      visibility: hidden;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: auto 90%;
       margin: 0 10px;
 
+      &.letter.item_1 {
+        background-image: url("../../../src/img/Letter_animation/Letter_animation_1.svg");
+      }
+      &.letter.item_2 {
+        background-image: url("../../../src/img/Letter_animation/Letter_animation_2.svg");
+      }
+      &.letter.item_3 {
+        background-image: url("../../../src/img/Letter_animation/Letter_animation_3.svg");
+      }
+      &.letter.item_4 {
+        background-image: url("../../../src/img/Letter_animation/Letter_animation_4.svg");
+      }
+      &.letter.item_5 {
+        background-image: url("../../../src/img/Letter_animation/Letter_animation_5.svg");
+      }
+
+      &.email.item_1 {
+        background-image: url("../../../src/img/Message_animation/Message_animation_1.svg");
+      }
+      &.email.item_2 {
+        background-image: url("../../../src/img/Message_animation/Message_animation_2.svg");
+      }
+      &.email.item_3 {
+        background-image: url("../../../src/img/Message_animation/Message_animation_3.svg");
+      }
+      &.email.item_4 {
+        background-image: url("../../../src/img/Message_animation/Message_animation_4.svg");
+      }
+      &.email.item_5 {
+        background-image: url("../../../src/img/Message_animation/Message_animation_5.svg");
+      }
+
       &.active {
         visibility: visible;
-      }
-    }
-
-    &.email {
-      div {
-        &:nth-child(1) {
-          background-image: url("../../../src/img/Letter_animation/Letter_animation_1.svg");
-        }
-        &:nth-child(2) {
-          background-image: url("../../../src/img/Letter_animation/Letter_animation_2.svg");
-        }
-        &:nth-child(3) {
-          background-image: url("../../../src/img/Letter_animation/Letter_animation_3.svg");
-        }
-        &:nth-child(4) {
-          background-image: url("../../../src/img/Letter_animation/Letter_animation_4.svg");
-        }
-        &:nth-child(5) {
-          background-image: url("../../../src/img/Letter_animation/Letter_animation_5.svg");
-        }
-      }
-    }
-
-    &.message {
-      div {
-        &:nth-child(1) {
-          background-image: url("../../../src/img/Message_animation/Message_animation_1.svg");
-        }
-        &:nth-child(2) {
-          background-image: url("../../../src/img/Message_animation/Message_animation_2.svg");
-        }
-        &:nth-child(3) {
-          background-image: url("../../../src/img/Message_animation/Message_animation_3.svg");
-        }
-        &:nth-child(4) {
-          background-image: url("../../../src/img/Message_animation/Message_animation_4.svg");
-        }
-        &:nth-child(5) {
-          background-image: url("../../../src/img/Message_animation/Message_animation_5.svg");
-        }
       }
     }
   }

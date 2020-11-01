@@ -27,7 +27,8 @@ export type Event = {
 }
 
 export enum MessageType {
-    SIMPLE = 'simple'
+    EMAIL = 'email',
+    LETTER = 'letter',
 }
 
 export type CrashedQueue = {

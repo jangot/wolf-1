@@ -1,7 +1,7 @@
 import './styles/index.scss';
 
 import padStart from 'lodash/padStart';
-import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue, } from './type';
+import { CrashedPosition, CrashedQueue, GAME_EVENT, GamePosition, MessagesQueue, MessageType, } from './type';
 import { Game } from './game';
 import { applyController } from './controller';
 import { element, onDeviceOrientation } from './util/index';
@@ -26,9 +26,14 @@ function renderCrashedLine(name: CrashedPosition, messages: CrashedQueue) {
         const el = element(`.crashed .${name} div:nth-child(${index + 1})`);
 
         if (item.status) {
-            el.addClass('active')
+            el
+                .addClass('active')
+                .addClass(item.type);
         } else {
-            el.removeClass('active');
+            el
+                .removeClass('active')
+                .removeClass(MessageType.EMAIL)
+                .removeClass(MessageType.LETTER);
         }
     });
 }

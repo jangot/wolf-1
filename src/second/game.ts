@@ -149,7 +149,7 @@ export class Game {
         const result: Message[] = [];
         for (let i = 0; i < count; i++) {
             result.push({
-                type: MessageType.SIMPLE,
+                type: MessageType.EMAIL,
                 status: false,
             });
         }
@@ -193,7 +193,7 @@ export class Game {
             };
         }, {
             status: false,
-            type: MessageType.SIMPLE
+            type: MessageType.EMAIL
         });
     }
 
@@ -220,7 +220,13 @@ export class Game {
             site = CrashedPosition.RIGHT;
         }
 
+        let type = MessageType.LETTER;
+        if (this.fail === GamePosition.BL || this.fail === GamePosition.BR) {
+            type = MessageType.EMAIL;
+        }
+
         this.crashed[site][0].status = true;
+        this.crashed[site][0].type = type;
     }
 
     private updateScore() {
