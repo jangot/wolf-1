@@ -18,7 +18,7 @@ export function mockRequests(mock: MockAdapter) {
             0
         ],
     });
-    mock.onPost('https://my-server.com/stat').reply(200, {
+    mock.onPost('https://my-server.com/tick').reply(200, {
         items: [
             1,
             2,

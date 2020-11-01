@@ -20,6 +20,14 @@ html, body {
   visibility: hidden;
 }
 
+.fullSize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .turn-info {
   position: fixed;
   top: 0;
@@ -28,7 +36,7 @@ html, body {
   left: 0;
   background: white;
   display: none;
-  z-index: 100000;
+  z-index: $layer-turn-info;
 
   .vertically.mobile-device & {
     display: block;
@@ -64,7 +72,7 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20000;
+  z-index: $layer-app-info;
 }
 
 .show-mobile {

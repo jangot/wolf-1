@@ -14,13 +14,19 @@ $color-ib-grey: #263746;
 $color-ib-blue: #d3f0f1;
 
 
-$layer-first-bg: 100;
-$layer-woolf: 110;
 $layer-shelf-top: 50;
-$layer-shelf-bottom: 60;
-$layer-messages: 110;
+$layer-second-bg: 60;
+$layer-shelf-bottom: 70;
+$layer-first-bg: 100;
+
+
+$layer-floor: 150;
+$layer-woolf: 150;
+$layer-messages: 150;
 $layer-tapper: 200;
 $layer-greeting: 300;
 $layer-score: 400;
 $layer-controls: 500;
+$layer-app-info: 1000;
+$layer-turn-info: 2000;
 

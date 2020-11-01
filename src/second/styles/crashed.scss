@@ -27,15 +27,53 @@
     div {
       width: $width;
       height: $height;
-      display: none;
-      background-image: url("../../../src/img/error-unactive.svg");
+      //visibility: hidden;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: auto 90%;
+      margin: 0 10px;
 
-      &:first-child {
-        &.active {
-          display: block;
+      &.active {
+        visibility: visible;
+      }
+    }
+
+    &.email {
+      div {
+        &:nth-child(1) {
+          background-image: url("../../../src/img/Letter_animation/Letter_animation_1.svg");
+        }
+        &:nth-child(2) {
+          background-image: url("../../../src/img/Letter_animation/Letter_animation_2.svg");
+        }
+        &:nth-child(3) {
+          background-image: url("../../../src/img/Letter_animation/Letter_animation_3.svg");
+        }
+        &:nth-child(4) {
+          background-image: url("../../../src/img/Letter_animation/Letter_animation_4.svg");
+        }
+        &:nth-child(5) {
+          background-image: url("../../../src/img/Letter_animation/Letter_animation_5.svg");
+        }
+      }
+    }
+
+    &.message {
+      div {
+        &:nth-child(1) {
+          background-image: url("../../../src/img/Message_animation/Message_animation_1.svg");
+        }
+        &:nth-child(2) {
+          background-image: url("../../../src/img/Message_animation/Message_animation_2.svg");
+        }
+        &:nth-child(3) {
+          background-image: url("../../../src/img/Message_animation/Message_animation_3.svg");
+        }
+        &:nth-child(4) {
+          background-image: url("../../../src/img/Message_animation/Message_animation_4.svg");
+        }
+        &:nth-child(5) {
+          background-image: url("../../../src/img/Message_animation/Message_animation_5.svg");
         }
       }
     }

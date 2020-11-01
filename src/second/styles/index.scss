@@ -28,17 +28,80 @@
   }
 
 
+  //.floor {
+  //  background: $color-ib-blue;
+  //  border-top: 1px $floor-color solid;
+  //  height: 3px;
+  //  border-bottom: 3px $floor-color solid;
+  //  position: absolute;
+  //  lett: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  z-index: $layer-floor;
+  //}
+
   .bg-1 {
-    height: 300px;
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../../../src/img/bg.svg");
-    background-position: bottom left;
-    background-repeat: repeat-x;
-    background-size: auto auto;
     z-index: $layer-first-bg;
+
+    div {
+      position: absolute;
+      height: $shelf-bottom;
+      bottom: -100px;
+      width: 100%;
+    }
+
+    .left {
+      left: -200px;
+      background-image: url("../../../src/img/Bush_left_front.svg");
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    .right {
+      right: -100px;
+      background-image: url("../../../src/img/Bush_right_front.svg");
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+  }
+
+  .bg-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $layer-second-bg;
+
+    div {
+      position: absolute;
+      height: $shelf-top;
+      bottom: -100px;
+      width: 60%;
+    }
+
+    .left {
+      left: -100px;
+      background-image: url("../../../src/img/Bush_left_back.svg");
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    .right {
+      right: -100px;
+      background-image: url("../../../src/img/Bush_right_back.svg");
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
   }
 
   .floor {
@@ -50,6 +113,7 @@
     height: 6px;
     background: $lite-trees-color;
     border-bottom: 6px $floor-color solid;
+    z-index: $layer-floor;
   }
 }
 

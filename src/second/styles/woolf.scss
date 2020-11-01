@@ -4,9 +4,10 @@
   position: absolute;
   width: 40%;
   height: 60%;
-  bottom: 0;
+  bottom: 12px;
   left: 30%;
   z-index: $layer-woolf;
+  //opacity: 0.1;
 
   .hero {
     width: 100%;

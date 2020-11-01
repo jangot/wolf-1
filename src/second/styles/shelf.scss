@@ -4,7 +4,7 @@
   width: 30%;
   position: absolute;
   overflow: hidden;
-  background-image: url("../../../src/img/shelf.svg");
+  //background-image: url("../../../src/img/shelf.svg");
   background-repeat:no-repeat;
   background-size: 100% auto;
 
@@ -13,25 +13,29 @@
     bottom: 0;
     height: $shelf-top;
     z-index: $layer-shelf-top;
-    transform: scale(-1, 1);
+    //transform: scale(-1, 1);
+    background-image: url("../../../src/img/Pipe_top_left.svg");
   }
   &-tr {
     right: 0;
     bottom: 0;
     height: $shelf-top;
     z-index: $layer-shelf-top;
+    background-image: url("../../../src/img/Pipe_right_top.svg");
   }
   &-bl {
     left: 0;
     bottom: 0;
     height: $shelf-bottom;
     z-index: $layer-shelf-bottom;
-    transform: scale(-1, 1);
+    //transform: scale(-1, 1);
+    background-image: url("../../../src/img/Pipe_bottom_left.svg");
   }
   &-br {
     right: 0;
     bottom: 0;
     height: $shelf-bottom;
     z-index: $layer-shelf-bottom;
+    background-image: url("../../../src/img/Pipe_bottom_right.svg");
   }
 }
