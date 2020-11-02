@@ -28,6 +28,15 @@ html, body {
   bottom: 0;
 }
 
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(95deg);
+  }
+}
+
 .turn-info {
   position: fixed;
   top: 0;
@@ -37,17 +46,35 @@ html, body {
   background: white;
   display: none;
   z-index: $layer-turn-info;
+  background: $main-bg;
+  align-items: center;
+
+  div {
+    width: 100%;
+  }
+
+  .device-icon {
+    text-align: center;
+    animation: spin 1.5s ease-in-out infinite;
+    font-size: 10em;
+  }
+
+  p {
+    text-align: center;
+    font-size: 2em;
+    color: $color-ib-orange;
+    font-weight: 900;
+  }
 
   .vertically.mobile-device & {
-    display: block;
+    display: flex;
   }
 }
 
 .game {
   width: 100vw;
   height: 100vh;
-  //background: $color-ib-blue;
-  background: linear-gradient(180deg,#8FE7EC,#ECF1F1);
+  background: $main-bg;
   margin: 0 auto;
   position: relative;
 

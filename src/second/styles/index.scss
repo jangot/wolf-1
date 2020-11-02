@@ -27,19 +27,6 @@
     background-size: 100% 100%;
   }
 
-
-  //.floor {
-  //  background: $color-ib-blue;
-  //  border-top: 1px $floor-color solid;
-  //  height: 3px;
-  //  border-bottom: 3px $floor-color solid;
-  //  position: absolute;
-  //  lett: 0;
-  //  right: 0;
-  //  bottom: 0;
-  //  z-index: $layer-floor;
-  //}
-
   .bg-1 {
     position: absolute;
     top: 0;
@@ -141,11 +128,14 @@
 
   .controls-info {
     margin-top: 20px;
-    padding: 20px 50px;
-    font-size: 20px;
-    border: 2px $color-ib-orange solid;
-    border-radius: 10px;
-    background: $color-ib-blue;
   }
+}
+
+.info-block {
+  padding: 20px 50px;
+  font-size: 20px;
+  border: 2px $color-ib-orange solid;
+  border-radius: 10px;
+  background: $color-ib-blue;
 }
 
