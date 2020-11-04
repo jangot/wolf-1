@@ -28,21 +28,16 @@ export class AuthService {
     }
 
     async sendPhone(phone: string, name: string): Promise<string> {
-        // const { data } = await this.client.post<CodeResponce>('/code', { phone, name });
+        const { data } = await this.client.post<CodeResponse>('/code', { phone, name });
 
-        // return data.id;
-
-        return 'asdasd-asdasdas';
+        return data.id;
     }
 
     async confirm(id: string, code: string) {
-        // const { data } = await this.client.post<ConfirmResponse>('/login', { id, code });
+        const { data } = await this.client.post<ConfirmResponse>('/login', { id, code });
 
-        // return data.token;
-        const token = 'token-qweqweq';
+        localStorage.setItem(TOKEN_KEY, data.token);
 
-        localStorage.setItem(TOKEN_KEY, token);
-
-        return token;
+        return data.token;
     }
 }
