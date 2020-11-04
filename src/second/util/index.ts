@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import isString from 'lodash/isString';
 
 export function addClass(element: Element, name: string): Element {
     const arr = element.className.split(' ');
@@ -28,8 +29,13 @@ export function onDeviceOrientation(cb: (e: any) => void) {
 
 export class El {
     public el: Element;
-    constructor(selector: string) {
-        this.el = document.querySelector(selector);
+    constructor(selector: string | Element) {
+        if (isString(selector)) {
+            this.el = document.querySelector(selector);
+        } else {
+            this.el = selector;
+        }
+
     }
     addClass(name: string) {
         if(!this.el) {
@@ -70,6 +76,6 @@ export class El {
     }
 }
 
-export function element(selector: string): El {
+export function element(selector: string | Element): El {
     return new El(selector);
 }

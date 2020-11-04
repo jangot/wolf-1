@@ -1,6 +1,7 @@
 @import "vars";
 
 .auth {
+  position: fixed !important;
   background: $main-bg;
   z-index: $layer-auth;
   display: flex;
@@ -20,7 +21,8 @@
       font-size: 3em;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="tel"]{
       width: 100%;
       box-sizing: border-box;
     }
@@ -31,12 +33,35 @@
       margin-top: 1em;
     }
 
+    .input-wrapper {
+      position: relative;
+
+      &::before {
+        content: "+";
+        position: absolute;
+        left: #{$input-padding-left - $input-font-size};
+        top: #{$input-padding-top + 3};
+        color: $color-ib-orange;
+        font-size: $input-font-size;
+      }
+    }
+
     .btn {
       max-width: 350px;
+
+      &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+      }
     }
   }
 
   .consent {
     font-size: 2em;
+  }
+
+  .error-form {
+    color: $color-ib-orange;
+    font-size: $input-font-size;
   }
 }

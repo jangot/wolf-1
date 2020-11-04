@@ -117,13 +117,18 @@ input:focus, textarea:focus, select:focus{
     display: none !important;
   }
 }
+.input-wrapper {
+  font-size: $input-font-size;
+  width: 100%;
+}
 
 .input {
-  font-size: 30px;
-  padding: 10px 50px;
+  font-size: $input-font-size;
+  padding: $input-padding-top $input-padding-left;
   border: 3px $color-ib-grey inset;
   border-radius: 20px;
 }
+
 
 .btn {
   background: $color-ib-orange;

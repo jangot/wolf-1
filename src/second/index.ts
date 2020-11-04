@@ -46,9 +46,9 @@ const lines = [
 ];
 
 startSession()
-    .then(() => {
+    .then((token) => {
 
-        const g = new Game();
+        const g = new Game(token);
 
         g.on(GAME_EVENT.START, () => {
             element('.error-0').removeClass('happened');

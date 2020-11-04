@@ -36,12 +36,14 @@ export class Game {
     started: boolean;
     server: Server;
     tickTime: number;
+    token: string;
 
     private timeout: number;
     private events: Event[];
 
-    constructor(debug: boolean = false) {
+    constructor(token: string, debug: boolean = false) {
         this.events = [];
+        this.token = token;
         this.resetState();
         this.debugMode = debug;
     }
@@ -58,7 +60,7 @@ export class Game {
     }
 
     async initConnection() {
-        this.server = new Server(this);
+        this.server = new Server(this, this.token);
         await this.server.start();
     }
 

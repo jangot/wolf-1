@@ -1,11 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { mockRequests } from './util/mocks';
 import { Game } from './game';
 import { GAME_EVENT } from './type';
-
-const mock = new MockAdapter(axios, { delayResponse: 2000 });
-mockRequests(mock);
+import { BASE_URL } from './constants';
 
 const SUM = 0;
 const MINUS = 1;
@@ -20,16 +16,19 @@ export class Server {
     protected tickCount: number;
     protected items: number[];
 
-    constructor(game: Game) {
+    constructor(game: Game, token: string) {
         this.game = game;
-        this.client = axios.create({
-            baseURL: 'https://my-server.com',
+        this.client = this.client = axios.create({
+            baseURL: BASE_URL,
+            headers: {
+                authorization: token
+            }
         });
         this.tickCount = 0;
         this.subscribe();
     }
     async start() {
-        const { data } = await this.client.get('/start');
+        const { data } = await this.client.post('/start');
 
         this.token = data.token;
         this.items = data.items;
