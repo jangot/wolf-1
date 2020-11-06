@@ -60,8 +60,8 @@ export class Game {
     }
 
     async initConnection() {
-        this.server = new Server(this, this.token);
-        await this.server.start();
+        // this.server = new Server(this, this.token);
+        // await this.server.start();
     }
 
     start() {
@@ -83,7 +83,6 @@ export class Game {
         if (!this.isRun || !this.started) {
             return;
         }
-        console.log('pause')
         this.isRun = false;
         clearTimeout(this.timeout);
         this.emit(GAME_EVENT.PAUSE);
