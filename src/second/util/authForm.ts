@@ -6,6 +6,7 @@ const inputPhone = document.querySelector<HTMLInputElement>('input[name="phone"]
 const inputConsent = document.querySelector<HTMLInputElement>('input[name="consent"]');
 const sendButton = document.querySelector<HTMLInputElement>('button[name="send"]');
 const inputPin = document.querySelector<HTMLInputElement>('input[name="pin"]');
+const inputId = document.querySelector<HTMLInputElement>('input[name="gameId"]');
 const confirmButton = document.querySelector<HTMLInputElement>('button[name="confirm"]');
 
 
@@ -34,13 +35,12 @@ function showConfirm() {
 
 export function authForm(auth: AuthService): Promise<string> {
     return new Promise<string>((resolve) => {
-        let id: string;
 
         element(sendButton).on('click', () => {
             auth
                 .sendPhone(inputPhone.value, inputName.value)
                 .then((resultID: string) => {
-                    id = resultID;
+                    inputId.value = resultID;
                     showConfirm();
                 })
                 .catch(() => {
@@ -49,7 +49,7 @@ export function authForm(auth: AuthService): Promise<string> {
         });
         element(confirmButton).on('click', () => {
             auth
-                .confirm(id, inputConsent.value)
+                .confirm(inputId.value, inputPin.value)
                 .then((token) => {
                     resolve(token);
                 })
