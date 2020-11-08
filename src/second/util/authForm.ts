@@ -34,15 +34,16 @@ function showConfirm() {
 
 export function authForm(auth: AuthService): Promise<string> {
     return new Promise<string>((resolve) => {
-        let id: string;
-
         element(sendButton).on('click', () => {
             const userPhone = '+' + inputPhone.value;
             const userName = inputName.value;
+
             auth
                 .sendPhone(userPhone, userName)
-                .then((resultID: string) => {
-                    id = resultID;
+                .then((result: any) => { // TODO: Add type
+                    console.log('result:');
+                    console.log(result);
+                    sessionStorage.setItem('gameID', result.id);
                     showConfirm();
                 })
                 .catch(() => {
@@ -50,8 +51,10 @@ export function authForm(auth: AuthService): Promise<string> {
                 });
         });
         element(confirmButton).on('click', () => {
+            const userPhone = '+' + inputPhone.value;
+
             auth
-                .confirm(id, inputConsent.value)
+                .confirm(sessionStorage.getItem('gameID'), userPhone)
                 .then((token) => {
                     resolve(token);
                 })

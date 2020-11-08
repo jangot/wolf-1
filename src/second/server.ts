@@ -21,7 +21,7 @@ export class Server {
         this.client = this.client = axios.create({
             baseURL: BASE_URL,
             headers: {
-                authorization: token
+                ibauth: token
             }
         });
         this.tickCount = 0;
