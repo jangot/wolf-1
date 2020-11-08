@@ -27,6 +27,11 @@ function showError(message: string) {
         .html(message);
 }
 
+function hideError() {
+    element('.error-form')
+        .addClass('hide');
+}
+
 function showConfirm() {
     hideList(document.querySelectorAll<HTMLInputElement>('.name-form'));
     showList(document.querySelectorAll<HTMLInputElement>('.confirm-form'));
@@ -44,6 +49,7 @@ export function authForm(auth: AuthService): Promise<string> {
                     console.log('result:');
                     console.log(result);
                     sessionStorage.setItem('gameID', result.id);
+                    hideError();
                     showConfirm();
                 })
                 .catch(() => {
@@ -56,6 +62,7 @@ export function authForm(auth: AuthService): Promise<string> {
             auth
                 .confirm(sessionStorage.getItem('gameID'), userPhone)
                 .then((token) => {
+                    hideError();
                     resolve(token);
                 })
                 .catch(() => {
