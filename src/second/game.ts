@@ -60,8 +60,8 @@ export class Game {
     }
 
     async initConnection() {
-        this.server = new Server(this, this.token);
-        await this.server.start();
+        // this.server = new Server(this, this.token);
+        // await this.server.start();
     }
 
     start() {

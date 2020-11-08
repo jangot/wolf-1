@@ -92,6 +92,19 @@
     }
   }
 
+  .bg-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $layer-third-bg;
+    background-image: url("../../../src/img/Bushes_background-1.svg");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+  }
+
   .floor {
     position: absolute;
     left: 0;

@@ -37,8 +37,10 @@ export function authForm(auth: AuthService): Promise<string> {
         let id: string;
 
         element(sendButton).on('click', () => {
+            const userPhone = '+' + inputPhone.value;
+            const userName = inputName.value;
             auth
-                .sendPhone(inputPhone.value, inputName.value)
+                .sendPhone(userPhone, userName)
                 .then((resultID: string) => {
                     id = resultID;
                     showConfirm();
