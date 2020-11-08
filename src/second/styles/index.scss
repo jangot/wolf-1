@@ -22,7 +22,7 @@
     height: 8vw;
     z-index: $layer-score;
 
-    background-image: url("../../../src/img/logo.svg");
+    background-image: url("../../../src/img/Logo.svg");
     background-position: top left;
     background-repeat:no-repeat;
     background-size: 100% 100%;
@@ -103,6 +103,19 @@
     background-position: left bottom;
     background-repeat: repeat-x;
     background-size: auto 100%;
+  }
+
+  .bg-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $layer-fourth-bg;
+    background-image: url("../../../src/img/Pattern_ver_1.svg");
+    background-position: 300px top;
+    background-repeat: repeat-x;
+    background-size: auto 50%;
   }
 
   .floor {
