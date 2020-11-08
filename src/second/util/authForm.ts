@@ -45,10 +45,10 @@ export function authForm(auth: AuthService): Promise<string> {
 
             auth
                 .sendPhone(userPhone, userName)
-                .then((result: any) => { // TODO: Add type
+                .then((id: string) => {
                     console.log('result:');
-                    console.log(result);
-                    sessionStorage.setItem('gameID', result.id);
+                    console.log(id);
+                    sessionStorage.setItem('gameID', id);
                     hideError();
                     showConfirm();
                 })
