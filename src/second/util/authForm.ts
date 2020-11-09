@@ -7,6 +7,7 @@ const inputConsent = document.querySelector<HTMLInputElement>('input[name="conse
 const sendButton = document.querySelector<HTMLInputElement>('button[name="send"]');
 const inputPin = document.querySelector<HTMLInputElement>('input[name="pin"]');
 const confirmButton = document.querySelector<HTMLInputElement>('button[name="confirm"]');
+const changeNumberButton = document.querySelector<HTMLInputElement>('button[name="changeNumber"]');
 
 
 function showList(list: NodeListOf<Element>) {
@@ -37,35 +38,50 @@ function showConfirm() {
     showList(document.querySelectorAll<HTMLInputElement>('.confirm-form'));
 }
 
+function hideConfirm() {
+    showList(document.querySelectorAll<HTMLInputElement>('.name-form'));
+    hideList(document.querySelectorAll<HTMLInputElement>('.confirm-form'));
+}
+
 export function authForm(auth: AuthService): Promise<string> {
     return new Promise<string>((resolve) => {
+        element(changeNumberButton).on('click', () => {
+            hideConfirm()
+        });
+
         element(sendButton).on('click', () => {
             const userPhone = '+' + inputPhone.value;
             const userName = inputName.value;
 
+            sendButton.disabled = true;
             auth
                 .sendPhone(userPhone, userName)
                 .then((id: string) => {
                     console.log('result:');
                     console.log(id);
                     sessionStorage.setItem('gameID', id);
+                    sendButton.disabled = false;
                     hideError();
                     showConfirm();
                 })
                 .catch(() => {
+                    sendButton.disabled = false;
                     showError('Something went wrong. Please try later.');
                 });
         });
         element(confirmButton).on('click', () => {
             const userPhone = '+' + inputPhone.value;
 
+            confirmButton.disabled = true;
             auth
                 .confirm(sessionStorage.getItem('gameID'), userPhone)
                 .then((token) => {
+                    confirmButton.disabled = false;
                     hideError();
                     resolve(token);
                 })
                 .catch(() => {
+                    confirmButton.disabled = false;
                     showError('Something went wrong. Please try later.');
                 });
         });

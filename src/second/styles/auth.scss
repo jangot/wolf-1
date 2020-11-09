@@ -16,6 +16,10 @@
     flex-direction: column;
     margin-top: 2em;
 
+    &.line-form {
+      flex-direction: row;
+    }
+
     .label {
       width: 20%;
       font-size: 3em;
@@ -48,6 +52,7 @@
 
     .btn {
       max-width: 350px;
+      margin: 0 20px;
 
       &[disabled] {
         opacity: 0.5;
