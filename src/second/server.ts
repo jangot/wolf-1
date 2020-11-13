@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import md5 from 'md5';
 import { Game } from './game';
 import { GAME_EVENT } from './type';
 import { BASE_URL } from './constants';
@@ -71,8 +72,14 @@ export class Server {
             errors,
             token,
             timestamp: new Date().getTime(),
-            updateId: getId(this.items.map(this.itemToIdData)),
+            updateId: this.getId(),
         }
+    }
+
+    getId() {
+        const id = getId(this.items.map(this.itemToIdData));
+
+        return md5(`Salt${id.toString()}Peanuts`);
     }
 
     itemToIdData(generatedItem: number): any {
