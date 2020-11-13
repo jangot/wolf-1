@@ -2,11 +2,9 @@ import axios, { AxiosInstance } from 'axios';
 import { Game } from './game';
 import { GAME_EVENT } from './type';
 import { BASE_URL } from './constants';
+import getId from './getId';
 
-const SUM = 0;
-const MINUS = 1;
-const MULTI = 2;
-const DEVIDE = 3;
+
 
 const TICKS_COUNT_FOR_REQUEST = 10;
 export class Server {
@@ -73,30 +71,18 @@ export class Server {
             errors,
             token,
             timestamp: new Date().getTime(),
-            proof: this.getProof()
+            updateId: getId(this.items.map(this.itemToIdData)),
         }
     }
 
-    protected getProof() {
-        // TODO hide the logic
-        const items = [
-            ...this.items
-        ];
-
-        const [firstIndex, secondIndex, actionIndex] = items.slice(-3);
-        const first = this.items[firstIndex];
-        const second = this.items[secondIndex];
-        const action = this.items[actionIndex];
-
-        switch (action) {
-            case SUM:
-                return first + second;
-            case MINUS:
-                return first - second;
-            case MULTI:
-                return first * second;
-            case DEVIDE:
-                return first / second;
+    itemToIdData(generatedItem: number): any {
+        if (typeof generatedItem === 'string') {
+            return generatedItem + 'custom_id';
         }
+        if (typeof generatedItem === 'boolean') {
+            return !generatedItem;
+        }
+
+        return generatedItem;
     }
 }

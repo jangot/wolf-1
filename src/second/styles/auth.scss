@@ -18,11 +18,18 @@
 
     &.line-form {
       flex-direction: row;
+
+      .mobile-device & {
+        flex-direction: column;
+
+        button {
+          margin-top: 30px;
+        }
+      }
     }
 
     .label {
       width: 20%;
-      font-size: 3em;
     }
 
     input[type="text"],
@@ -43,8 +50,11 @@
       &::before {
         content: "+";
         position: absolute;
+        height: 1em;
+        line-height: 1em;
         left: #{$input-padding-left - $input-font-size};
-        top: #{$input-padding-top + 3};
+        top: $input-padding-top;
+        vertical-align: center;
         color: $color-ib-orange;
         font-size: $input-font-size;
       }
@@ -63,6 +73,10 @@
 
   .consent {
     font-size: 2em;
+
+    .mobile-device & {
+      font-size: 1em;
+    }
   }
 
   .error-form {

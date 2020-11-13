@@ -13,8 +13,10 @@ $main-bg: linear-gradient(180deg,#8FE7EC,#ECF1F1);
 $color-ib-orange: #e9530e;
 $color-ib-grey: #263746;
 $color-ib-blue: #d3f0f1;
+$color-ib-grey-dark: lighten($floor-color, 10%);
 
 $input-font-size: 30px;
+$label-font-size: 3em;
 $input-padding-left: 50px;
 $input-padding-top: 10px;
 
