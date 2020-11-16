@@ -59,8 +59,11 @@ export function authForm(auth: AuthService): Promise<string> {
             auth
                 .sendPhone(userPhone, userName)
                 .then((id: string) => {
-                    sessionID = id;
-                    sendButton.disabled = false;
+                    sessionStorage.setItem('sessionID', id);
+                    setTimeout(() => {
+                        sendButton.disabled = false;
+                    }, 6000);
+
                     hideError();
                     showConfirm();
                 })
@@ -72,16 +75,23 @@ export function authForm(auth: AuthService): Promise<string> {
         element(confirmButton).on('click', () => {
             confirmButton.disabled = true;
             auth
-                .confirm(sessionID, inputPin.value)
+                .confirm(sessionStorage.getItem('sessionID'), inputPin.value)
                 .then((token) => {
                     confirmButton.disabled = false;
                     hideError();
                     resolve(token);
                 })
                 .catch((e) => {
-                    console.log(e);
+                    const status = e.response ? e.response.status : 0;
+                    switch (status) {
+                        case 401:
+                            showError('Wrong pin. Please check you phone.');
+                            break;
+                        default:
+                            showError('Something went wrong. Please try later.');
+                    }
                     confirmButton.disabled = false;
-                    showError('Something went wrong. Please try later.');
+
                 });
         });
     });

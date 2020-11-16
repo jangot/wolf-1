@@ -28,17 +28,21 @@ export function startSession(): Promise<string> {
     });
 
     const auth = new AuthService();
-    if (auth.hasToken()) {
-        element('.auth').addClass('hide');
-        return Promise.resolve(auth.getToken());
-    }
-    behaviorForm();
-    element('.auth').removeClass('hide');
-
-    return authForm(auth)
-        .then((token) => {
+    return auth.hasToken()
+        .then(() => {
             element('.auth').addClass('hide');
 
-            return token;
+            return auth.getToken();
+        })
+        .catch(() => {
+            behaviorForm();
+            element('.auth').removeClass('hide');
+
+            return authForm(auth)
+                .then((token) => {
+                    element('.auth').addClass('hide');
+
+                    return token;
+                });
         });
 }

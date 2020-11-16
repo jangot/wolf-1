@@ -23,8 +23,12 @@ export class AuthService {
         return localStorage.getItem(TOKEN_KEY);
     }
 
-    hasToken(): boolean {
-        return !!localStorage.getItem(TOKEN_KEY);
+    async hasToken(): Promise<void> {
+        const token = localStorage.getItem(TOKEN_KEY);
+
+        if (!token) {
+            throw new Error('There is not token');
+        }
     }
 
     async sendPhone(phone: string, name: string): Promise<string> {
