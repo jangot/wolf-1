@@ -32,16 +32,6 @@ module.exports = {
                     options: {}
                 }
             },
-            // {
-            //     test: /\.js$/,
-            //     enforce: 'post',
-            //     use: {
-            //         loader: WebpackObfuscator.loader,
-            //         options: {
-            //             rotateStringArray: true
-            //         }
-            //     }
-            // }
         ],
     },
     plugins: [

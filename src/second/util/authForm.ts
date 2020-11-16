@@ -49,17 +49,17 @@ export function authForm(auth: AuthService): Promise<string> {
             hideConfirm()
         });
 
+        let sessionID = '';
         element(sendButton).on('click', () => {
             const userPhone = '+' + inputPhone.value;
             const userName = inputName.value;
 
             sendButton.disabled = true;
+
             auth
                 .sendPhone(userPhone, userName)
                 .then((id: string) => {
-                    console.log('result:');
-                    console.log(id);
-                    sessionStorage.setItem('gameID', id);
+                    sessionID = id;
                     sendButton.disabled = false;
                     hideError();
                     showConfirm();
@@ -70,17 +70,18 @@ export function authForm(auth: AuthService): Promise<string> {
                 });
         });
         element(confirmButton).on('click', () => {
-            const userPhone = '+' + inputPhone.value;
+            const pinCode = '+' + inputPin.value;
 
             confirmButton.disabled = true;
             auth
-                .confirm(sessionStorage.getItem('gameID'), userPhone)
+                .confirm(sessionID, pinCode)
                 .then((token) => {
                     confirmButton.disabled = false;
                     hideError();
                     resolve(token);
                 })
-                .catch(() => {
+                .catch((e) => {
+                    console.log(e);
                     confirmButton.disabled = false;
                     showError('Something went wrong. Please try later.');
                 });

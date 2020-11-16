@@ -39,7 +39,7 @@ export class Game {
         }
         this.timeout = setTimeout(() => {
             this.run();
-        }, this.time);
+        }, this.time) as unknown as number;;
     }
 
     fail() {

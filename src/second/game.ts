@@ -110,7 +110,7 @@ export class Game {
     next() {
         this.timeout = setTimeout(() => {
             this.tick();
-        }, this.tickTime);
+        }, this.tickTime) as unknown as number;
     }
 
     setWolfPosition(position: GamePosition) {
