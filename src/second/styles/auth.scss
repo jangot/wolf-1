@@ -50,13 +50,16 @@
       &::before {
         content: "+";
         position: absolute;
-        height: 1em;
-        line-height: 1em;
         left: #{$input-padding-left - $input-font-size};
         top: $input-padding-top;
         vertical-align: center;
         color: $color-ib-orange;
         font-size: $input-font-size;
+
+        .mobile-device & {
+          height: 1em;
+          line-height: 0.9em;
+        }
       }
     }
 

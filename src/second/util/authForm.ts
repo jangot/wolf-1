@@ -70,11 +70,9 @@ export function authForm(auth: AuthService): Promise<string> {
                 });
         });
         element(confirmButton).on('click', () => {
-            const pinCode = '+' + inputPin.value;
-
             confirmButton.disabled = true;
             auth
-                .confirm(sessionID, pinCode)
+                .confirm(sessionID, inputPin.value)
                 .then((token) => {
                     confirmButton.disabled = false;
                     hideError();
