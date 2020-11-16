@@ -14,6 +14,7 @@ export class Server {
     protected token: string;
     protected tickCount: number;
     protected items: number[];
+    protected tickPromise: Promise<any>;
 
     constructor(game: Game, token: string) {
         this.game = game;
@@ -37,18 +38,22 @@ export class Server {
         this.tickCount++
         if (this.tickCount === TICKS_COUNT_FOR_REQUEST) {
             this.tickCount = 0;
-            console.log(this.getData())
 
-            const { data } = await this.client.post('/tick', this.getData());
-            this.items = data.items;
+            this.tickPromise = this.client.post('/tick', this.getData());
+            this.tickPromise.then(({ data }) => {
+                this.items = data.items;
+            });
         }
     }
 
     protected async finish() {
-        const { data } = await this.client.post('/finish', this.getData());
-        console.log(this.getData())
-
-        console.log(data)
+        this.tickPromise
+            .then(() => {
+                return this.client.post('/finish', this.getData());
+            })
+            .then(() => {
+                console.log('Finished!');
+            });
     }
 
     protected subscribe() {
