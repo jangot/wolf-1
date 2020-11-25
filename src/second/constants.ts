@@ -1,2 +1,2 @@
 
-export const BASE_URL = 'http://infobip.com/gameapi/game'
+export const BASE_URL = 'https://infobip.com/gameapi/game'
