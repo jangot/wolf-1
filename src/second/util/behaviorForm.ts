@@ -7,7 +7,8 @@ const sendButton = document.querySelector<HTMLInputElement>('button[name="send"]
 const inputPin = document.querySelector<HTMLInputElement>('input[name="pin"]');
 const confirmButton = document.querySelector<HTMLInputElement>('button[name="confirm"]');
 
-const NUMBER_PHONE_LENGTH = 11;
+const MIN_PHONE_LENGTH = 11;
+const NUMBER_PHONE_LENGTH = 13;
 function typePhone() {
     const val = parseInt(inputPhone.value);
 
@@ -25,7 +26,7 @@ function typePhone() {
 }
 
 function disableSendButton() {
-    const disabled = inputName.value === '' || !inputConsent.checked || inputPhone.value.length < NUMBER_PHONE_LENGTH;
+    const disabled = inputName.value === '' || !inputConsent.checked || inputPhone.value.length < MIN_PHONE_LENGTH;
 
     sendButton.disabled = disabled;
 }
