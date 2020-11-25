@@ -9,6 +9,7 @@ const confirmButton = document.querySelector<HTMLInputElement>('button[name="con
 
 const MIN_PHONE_LENGTH = 11;
 const NUMBER_PHONE_LENGTH = 13;
+
 function typePhone() {
     const val = parseInt(inputPhone.value);
 
