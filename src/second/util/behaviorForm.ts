@@ -27,7 +27,7 @@ function typePhone() {
 }
 
 function disableSendButton() {
-    const disabled = inputName.value === '' || !inputConsent.checked || inputPhone.value.length < MIN_PHONE_LENGTH;
+    const disabled = inputName.value.length < 4;
 
     sendButton.disabled = disabled;
 }

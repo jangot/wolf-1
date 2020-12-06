@@ -31,8 +31,20 @@ export class AuthService {
         }
     }
 
+    setToken(token: string) {
+        localStorage.setItem(TOKEN_KEY, token);
+    }
+
     async sendPhone(phone: string, name: string): Promise<string> {
         const { data } = await this.client.post<CodeResponse>('/code', { phone, name });
+
+        return data.id;
+    }
+
+    async sendName(login: string): Promise<string> {
+        const { data } = await this.client.post<CodeResponse>('/dobar_dan', { login });
+
+        localStorage.setItem(TOKEN_KEY, data.id);
 
         return data.id;
     }
@@ -41,7 +53,6 @@ export class AuthService {
         const { data } = await this.client.post<ConfirmResponse>('/login', { id, code });
 
         localStorage.setItem(TOKEN_KEY, data.token);
-
         return data.token;
     }
 }
