@@ -40,12 +40,18 @@ export class Game {
 
     private timeout: number;
     private events: Event[];
+    private shouldSaveDada: boolean;
 
     constructor(token: string, debug: boolean = false) {
         this.events = [];
         this.token = token;
         this.resetState();
         this.debugMode = debug;
+        this.shouldSaveDada = false;
+    }
+
+    saveDataMode() {
+        this.shouldSaveDada = true;
     }
 
     on(name: GAME_EVENT, cb: () => void): () => void {
@@ -60,8 +66,10 @@ export class Game {
     }
 
     async initConnection() {
-        this.server = new Server(this, this.token);
-        await this.server.start();
+        if (this.shouldSaveDada) {
+            this.server = new Server(this, this.token);
+            await this.server.start();
+        }
     }
 
     start() {

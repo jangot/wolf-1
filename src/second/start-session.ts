@@ -1,8 +1,9 @@
 import { element, onDeviceOrientation } from './util';
 import { collectInfo } from './util/device-info';
-import { AuthService } from './auth';
+import { AuthInterface, AuthService } from './auth';
 import { behaviorForm } from './util/behaviorForm';
 import { authForm } from './util/authForm';
+import { FakeAuth } from './FakeAuth';
 
 function renderInfo() {
     const deviceInfo = collectInfo();
@@ -20,14 +21,15 @@ function renderInfo() {
     }
 }
 
-export function startSession(): Promise<string> {
+export function startSession(shouldSaveData: boolean): Promise<string> {
     renderInfo()
 
     onDeviceOrientation(() => {
         renderInfo();
     });
 
-    const auth = new AuthService();
+    const auth = shouldSaveData ? new AuthService() : new FakeAuth();
+
     return auth.hasToken()
         .then(() => {
             element('.auth').addClass('hide');

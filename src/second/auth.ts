@@ -10,7 +10,16 @@ interface ConfirmResponse {
     token: string;
 }
 
-export class AuthService {
+export interface AuthInterface {
+    getToken: () => string,
+    hasToken: () => Promise<void>,
+    setToken: (token: string) => void,
+    sendPhone: (phone: string, name: string) => Promise<string>,
+    sendName: (login: string) => Promise<string>,
+    confirm: (id: string, code: string) => Promise<string>
+}
+
+export class AuthService implements AuthInterface {
     protected client: AxiosInstance;
 
     constructor() {
@@ -49,7 +58,7 @@ export class AuthService {
         return data.id;
     }
 
-    async confirm(id: string, code: string) {
+    async confirm(id: string, code: string): Promise<string> {
         const { data } = await this.client.post<ConfirmResponse>('/login', { id, code });
 
         localStorage.setItem(TOKEN_KEY, data.token);

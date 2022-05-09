@@ -1,4 +1,4 @@
-import { AuthService } from '../auth';
+import { AuthInterface } from '../auth';
 import { element } from './index';
 
 const inputName = document.querySelector<HTMLInputElement>('input[name="name"]');
@@ -43,7 +43,9 @@ function hideConfirm() {
     hideList(document.querySelectorAll<HTMLInputElement>('.confirm-form'));
 }
 
-export function authForm(auth: AuthService): Promise<string> {
+
+
+export function authForm(auth: AuthInterface): Promise<string> {
     return new Promise<string>((resolve) => {
         element(changeNumberButton).on('click', () => {
             hideConfirm()

@@ -45,10 +45,15 @@ const lines = [
     GamePosition.BR,
 ];
 
-startSession()
+const SAVE_DATA_MODE = false;
+
+startSession(SAVE_DATA_MODE)
     .then((token) => {
 
         const g = new Game(token);
+        if (SAVE_DATA_MODE) {
+            g.saveDataMode();
+        }
 
         g.on(GAME_EVENT.START, () => {
             element('.error-0').removeClass('happened');
